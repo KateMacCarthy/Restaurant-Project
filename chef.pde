@@ -4,6 +4,7 @@ class Chef extends Person{
   boolean cooking, serving;
   
   Chef(float s){
+    super();
     this.skill = s;
     this.vel = new PVector(0, 0);
     this.cooking = true;

@@ -1,6 +1,5 @@
 class Person {
-  
-  PVector velocity, pos;
+  PVector vel, pos;
   int speed;
   int r = 15;
   color col;
