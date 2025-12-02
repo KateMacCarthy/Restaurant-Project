@@ -3,6 +3,7 @@ class Furniture{
   float w, h, sideLength;
   PVector pos;
   color col;
+  boolean taken;
   
   //Constructor
   Furniture(float w, float h, color col, float x, float y) {
@@ -15,6 +16,7 @@ class Furniture{
   Furniture(float sl, color col, float x, float y) {
     this.sideLength = sl;
     this.col = col;
+    this.taken = false;
     this.pos = new PVector(x, y);
   }
   
