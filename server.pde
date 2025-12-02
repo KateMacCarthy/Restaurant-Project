@@ -1,10 +1,7 @@
-<<<<<<< Updated upstream
 //class Server extends Person{
-=======
 class Server extends Person{
   float skill;
   boolean hasFood, serving;
->>>>>>> Stashed changes
   
   Server(float x, float y, float s){
     super(x, y, color(50, 80, 155), "server");
@@ -23,13 +20,8 @@ class Server extends Person{
     this.vel = c.pos.sub(this.pos).normalize();
     this.pos.add(this.vel.mult(skill));
   }
-  
-  
-<<<<<<< Updated upstream
-//}
-=======
+ 
 }
 // If doesn't have food, pick a dish that is "readyToServe"
 // Find a customer who is free, then serving = true
 // after served, hasFood=false, serving=false
->>>>>>> Stashed changes

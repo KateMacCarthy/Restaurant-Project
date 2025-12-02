@@ -20,7 +20,3 @@ void draw() {
   }
   
 }
-
-void draw(){
-  
-}
