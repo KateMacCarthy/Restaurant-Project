@@ -6,7 +6,7 @@ class Person {
   String name;
   
   
-  Person(int x, int y, color c, String s){
+  Person(float x, float y, color c, String s){
     this.pos.x = x;
     this.pos.y = y;
     this.speed = int(random(1,3));
