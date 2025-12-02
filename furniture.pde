@@ -1,21 +1,27 @@
 class Furniture{
   //Fields
-  float w, h;
+  float w, h, sideLength;
   PVector pos;
   color col;
   
   //Constructor
-  Furniture() {
-    this.w = 10;
-    this.h = 5;
-    this.pos = new PVector(75, 30);
+  Furniture(float w, float h, color col, float x, float y) {
+    this.w = w;
+    this.h = h;
+    this.pos = new PVector(x, y);
     this.col = color(92, 64, 51);
+  }
+  
+  Furniture(float sl, color col, float x, float y) {
+    this.sideLength = sl;
+    this.col = col;
+    this.pos = new PVector(x, y);
   
   }
   
   
   //Methods
-  void drawMe() {
+  void drawChair() {
     fill(col);
     rect(this.pos.x, this.pos.y, w, h);
   
