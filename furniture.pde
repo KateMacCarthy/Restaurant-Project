@@ -23,6 +23,10 @@ class Furniture{
   void drawChair() {
     fill(col);
     square(this.pos.x, this.pos.y, sideLength);
+  }
   
+  void drawTable() {
+    fill(col);
+    rect(this.pos.x, this.pos.y, w, h);
   }
 }
