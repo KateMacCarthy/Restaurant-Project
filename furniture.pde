@@ -9,21 +9,20 @@ class Furniture{
     this.w = w;
     this.h = h;
     this.pos = new PVector(x, y);
-    this.col = color(92, 64, 51);
+    this.col = col;
   }
   
   Furniture(float sl, color col, float x, float y) {
     this.sideLength = sl;
     this.col = col;
     this.pos = new PVector(x, y);
-  
   }
   
   
   //Methods
   void drawChair() {
     fill(col);
-    rect(this.pos.x, this.pos.y, w, h);
+    square(this.pos.x, this.pos.y, sideLength);
   
   }
 }
