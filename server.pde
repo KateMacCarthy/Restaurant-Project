@@ -1,4 +1,3 @@
-//class Server extends Person{
 class Server extends Person{
   float skill;
   boolean hasFood, serving;
