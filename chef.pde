@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //class Chef extends Person{
 //  float skill;
 //  PVector vel;
@@ -9,6 +10,18 @@
 //    this.vel = new PVector(0, 0);
 //    this.cooking = true;
 //  }
+=======
+class Chef extends Person{
+  float skill;
+  boolean cooking, serving;
+  
+  Chef(float x, float y, float s){
+    super(x, y, color(255), "chef");
+    this.skill = s;
+    this.vel = new PVector(0, 0);
+    this.cooking = true;
+  }
+>>>>>>> 6dd5736087faba1fd37a8f3f65f856c9039d08be
   
 //  void cook(){
 //   this.vel = new PVector(0, 0); 
