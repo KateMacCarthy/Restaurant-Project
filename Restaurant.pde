@@ -6,10 +6,14 @@ Furniture[] tables = new Furniture[6];
 Chef[] chefs;
 Server[] servers;
 
+//The values that can be adjusted by the sliders
+//They are set to the sliders inital value
 int numOfServers = 4;
 int numOfChefs = 1;
-int serverSkill;
-int chefSkill;
+int serverSkill = 5;
+int chefSkill = 5;
+int customerRate = 2;
+int costOfFood = 20;
 
 void setup() {
   size(1000, 600);
