@@ -3,6 +3,13 @@ import g4p_controls.*;
 //Global Variables
 Furniture[] chairs = new Furniture[24];
 Furniture[] tables = new Furniture[6];
+Chef[] chefs;
+Server[] servers;
+
+int numOfServers = 4;
+int numOfChefs = 1;
+int serverSkill;
+int chefSkill;
 
 void setup() {
   size(1000, 600);
