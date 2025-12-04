@@ -1,22 +1,22 @@
 void createFurniture() {
   for (int i = 0; i < chairs.length; i++){
-    float x = 20 + (i*35);
+    float x = 20 + (i*45);
     float y = 20;
     
-    chairs[i] = new Furniture(30, color(92, 64, 51), x, y);
+    chairs[i] = new Furniture(40, color(92, 64, 51), x, y);
   }
   
   for (int i = 0; i < tables.length; i++){
-    float x = 20 + (i*65);
+    float x = 20 + (i*105);
     float y = 100;
     
-    tables[i] = new Furniture(60, 50, color(92, 64, 51), x, y);
+    tables[i] = new Furniture(100, 80, color(92, 64, 51), x, y);
 
   }
 }
 
 void createServers(){ 
-  servers = new Server[numOfServers];
+  servers = new Server[int(numOfServers)];
   
   for (int i = 0; i < servers.length; i++){
     float x = 700;
@@ -61,6 +61,13 @@ void setGUIValues() {
     numOfChefs = 1;
     customerRate = 2;
     costOfFood = 20;
+  }
+  else {
+    rentPrice = 0;
+    numOfServers = 1;
+    numOfChefs = 1;
+    customerRate = 1;
+    costOfFood = 10;
   }
   
   NumberOfServers.setValue(numOfServers);

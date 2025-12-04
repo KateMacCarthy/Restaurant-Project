@@ -11,27 +11,30 @@ Server[] servers;
 boolean paused = true;
 
 String restaurantName;
-String location;
+String location = "";
 
 float rentPrice;
 
-float numOfServers;
-float numOfChefs;
-float serverSkill;
-float chefSkill;
-float customerRate = 2;
-float costOfFood = 20;
+float numOfServers, numOfChefs;
+float serverSkill, chefSkill;
+float customerRate, costOfFood;
 
 void setup() {
   size(1000, 600);
-  background(255);
-  //createGUI(); 
+  background(225);
+  createGUI(); 
+  restaurantControls.setVisible(false);
+  createNewRestaurant.setVisible(true);
   
   createFurniture();
 }
 
 void draw() {
-  background(255);
+  background(225);
+  fill(70);
+  rect(750, 0, 40, 600);
+  fill(180);
+  rect(960, 0, 40, 600);
   
   for (int i = 0; i < chairs.length; i++){
     chairs[i].drawChair();

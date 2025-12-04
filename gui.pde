@@ -24,7 +24,7 @@ public void RestaurantNameTextBox(GTextField source, GEvent event) { //_CODE_:Re
 } //_CODE_:RestaurantName:893966:
 
 public void RestaurantLocationPicked(GDropList source, GEvent event) { //_CODE_:RestaurantLocation:847766:
-  location = RestaurantLocation.getText();
+  location = RestaurantLocation.getSelectedText();
 } //_CODE_:RestaurantLocation:847766:
 
 public void CreateRestaurantClicked(GButton source, GEvent event) { //_CODE_:CreateRestaurant:252882:
@@ -166,7 +166,7 @@ public void createGUI(){
   WelcomeSign.setOpaque(false);
   RestaurantNameLabel = new GLabel(restaurantControls, 45, 30, 150, 20);
   RestaurantNameLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  RestaurantNameLabel.setText("RestaurantName");
+  RestaurantNameLabel.setText("Restaurant Name");
   RestaurantNameLabel.setOpaque(false);
   AmountOfServers = new GLabel(restaurantControls, 20, 65, 80, 20);
   AmountOfServers.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
