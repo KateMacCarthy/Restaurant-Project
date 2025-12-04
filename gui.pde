@@ -65,6 +65,7 @@ public void CostOfFoodSliderChanged(GCustomSlider source, GEvent event) { //_COD
 
 public void PauseButtonClicked(GButton source, GEvent event) { //_CODE_:PauseButton:921997:
   paused = !paused;
+  setGUIValues();
   
   if (paused) {
     PauseButton.setText("Resume");

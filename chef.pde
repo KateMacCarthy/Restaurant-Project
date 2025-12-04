@@ -9,6 +9,8 @@ class Chef extends Person{
     this.vel = new PVector(0, 0);
     this.cooking = true;
   }
+}
+  
   
 //  void cook(){
 //   this.vel = new PVector(0, 0); 

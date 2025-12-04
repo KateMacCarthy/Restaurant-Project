@@ -27,7 +27,7 @@ void createServers(){
 }
 
 void createChefs(){ 
-  chefs = new Chef[numOfChefs];
+  chefs = new Chef[int(numOfChefs)];
   
   for (int i = 0; i < chefs.length; i++){
     float x = 800;

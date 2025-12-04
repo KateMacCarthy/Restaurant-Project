@@ -10,8 +10,8 @@ class Customer extends Person{
   
   // Constructor
   
-  Customer(int x, int y, String s){
-    super(x,y,color(47,196,84), s); // Just uses the constructor from the person class
+  Customer(float x, float y, String s){
+    super(x, y, color(47,196,84), s); // Just uses the constructor from the person class
   }
   
   // Functions
@@ -20,110 +20,109 @@ class Customer extends Person{
   // The two shared functions
   
   void draw(){
-    super.draw(this.inRestaurant); // Uses the draw function of the person class while parsing the inRestaurant value
+    super.draw(); // Uses the draw function of the person class while parsing the inRestaurant value
   }
-  
-  void talk(String s){
-    super.talk(s); // Uses the talk function of the person class
-  }
+
+  //void talk(String s){
+  //  super.talk(s); // Uses the talk function of the person class
+  //}
   
   //The rest of the functions
   
-  void requestServer(){
-    float closestDist = 1000000; // Set this to an impossibly high number for this to work
-    int i = 0; // Create an index value
-    int truei; // truei (used for actually calling the Server later)
+  //void requestServer(){
+  //  float closestDist = 1000000; // Set this to an impossibly high number for this to work
+  //  int i = 0; // Create an index value
+  //  int truei; // truei (used for actually calling the Server later)
     
-    for( Server currServer : servers){ // Make a for loop that looks through the Servers list
-      float distToServer = this.pos.dist(currServer.pos); // Find out the distance from the current Server
+  //  for( Server currServer : servers){ // Make a for loop that looks through the Servers list
+  //    float distToServer = this.pos.dist(currServer.pos); // Find out the distance from the current Server
       
-      if(distToServer < closestDist && !currServer.takingOrder){ // IF the distance to Server is shorter than the closestdistance ever AND the Server is not taking an order
-        closestDist = distToServer; // Set closest distance to the distance of the current Server
-        truei = i; // Set truei to i
-      }
+  //    if(distToServer < closestDist && !currServer.serving){ // IF the distance to Server is shorter than the closestdistance ever AND the Server is not taking an order
+  //      closestDist = distToServer; // Set closest distance to the distance of the current Server
+  //      truei = i; // Set truei to i
+  //    }
       
-      i++; // Increment i by one
+  //    i++; // Increment i by one
       
-    }
+  //  }
     
-    this.talk("Excuse me I need a sServererver!"); // Make the customer ask for a Server
-    servers[truei].takeOrder(this); // Calls the Server's takeOrder function
+  //  this.talk("Excuse me I need a sServererver!"); // Make the customer ask for a Server
+  //  servers[truei].serving(this); // Calls the Server's takeOrder function
     
-  }
+  //}
   
-  void DESTROY(table t){
-    int dieroll = int(random(0,7)); // Randomly roll a die
+  //void DESTROY(Furniture t){
+  //  int dieroll = int(random(0,7)); // Randomly roll a die
     
-    switch(dieroll){ // Switch function (USE THIS INSTEAD OF ELSE IFS IN THE CASE THAT YOU HAVE MORE THAN THREE THINGS YOU NEED TO CHECK AND ITS NOT A RANGE!!!
-      case 1: // If the die "Lands" on 1
-        this.talk("AHH MY HAND!!!!"); // Make the customer talk
-        this.inRestaurant = false; // In this case, the customer broke their hand so they are hurt A LOT
-        break;
-      case 2:
-        this.talk("JUST BREAK ALREADY YOU DARN TABLE!");
-        t.takeDamage(2); //Tells the table to take damage (in this case, two damage
-        break;
-      case 3:
-       this.talk("JUST BREAK ALREADY YOU DARN TABLE!");
-       t.takeDamage(4);
-       break;
-      case 4:
-       this.talk("IM GONNA DESTROY THIS DARN THING!");
-       t.takeDamage(6);
-       break;
-      case 5:
-       this.talk("IM GONNA DESTROY THIS DARN THING!");
-       t.takeDamage(10);
-       break;
-      case 6:
-       this.talk("I AM SO STRONG!");
-       t.destroyed = true; //Just destroys the table
-       break;
-    }
+  //  switch(dieroll){ // Switch function (USE THIS INSTEAD OF ELSE IFS IN THE CASE THAT YOU HAVE MORE THAN THREE THINGS YOU NEED TO CHECK AND ITS NOT A RANGE!!!
+  //    case 1: // If the die "Lands" on 1
+  //      this.talk("AHH MY HAND!!!!"); // Make the customer talk
+  //      this.inRestaurant = false; // In this case, the customer broke their hand so they are hurt A LOT
+  //      break;
+  //    case 2:
+  //      this.talk("JUST BREAK ALREADY YOU DARN TABLE!");
+  //      t.takeDamage(2); //Tells the table to take damage (in this case, two damage
+  //      break;
+  //    case 3:
+  //     this.talk("JUST BREAK ALREADY YOU DARN TABLE!");
+  //     t.takeDamage(4);
+  //     break;
+  //    case 4:
+  //     this.talk("IM GONNA DESTROY THIS DARN THING!");
+  //     t.takeDamage(6);
+  //     break;
+  //    case 5:
+  //     this.talk("IM GONNA DESTROY THIS DARN THING!");
+  //     t.takeDamage(10);
+  //     break;
+  //    case 6:
+  //     this.talk("I AM SO STRONG!");
+  //     t.destroyed = true; //Just destroys the table
+  //     break;
+  //  }
     
-  }
+  //}
   
-  void eat(food f, restaurant r){
+  //void eat(food f, restaurant r){
    
-    switch(f.quality){ //Check the food quality
-      case 1: // If the food is one star
-        this.talk("THIS FOOD SUCKS!"); // Make the customer talk
-        this.patience -= 50; // Decrease their patience
-        this.eating = false; // Make them stop eating
-        this.leaving = true; // Make them leave
-        r.rating -= 0.5; // Decrease the restaurants rating
-        break;
+  //  switch(f.quality){ //Check the food quality
+  //    case 1: // If the food is one star
+  //      this.talk("THIS FOOD SUCKS!"); // Make the customer talk
+  //      this.patience -= 50; // Decrease their patience
+  //      this.eating = false; // Make them stop eating
+  //      this.leaving = true; // Make them leave
+  //      r.rating -= 0.5; // Decrease the restaurants rating
+  //      break;
         
-      case 2:
-        this.talk("THIS FOOD IS actually not that bad, still a bit bummed out though");
-        this.patience -= 25;
-        this.eating = false;
-        this.leaving = true;
-        r.rating -= 0.25;
-        break;
+  //    case 2:
+  //      this.talk("THIS FOOD IS actually not that bad, still a bit bummed out though");
+  //      this.patience -= 25;
+  //      this.eating = false;
+  //      this.leaving = true;
+  //      r.rating -= 0.25;
+  //      break;
         
-      case 3:
-        this.talk("This food is actually pretty good!");
-        this.eating = false;
-        this.leaving = true;
-        r.rating += 0.25; // Increase the restaurants rating
-        break;
+  //    case 3:
+  //      this.talk("This food is actually pretty good!");
+  //      this.eating = false;
+  //      this.leaving = true;
+  //      r.rating += 0.25; // Increase the restaurants rating
+  //      break;
        
-      case 4:
-        this.talk("This food is REALLY good, I'm gonna leave a tip");
-        this.eating = false;
-        this.leaving = true;
-        r.rating += 0.5;
-        break;
+  //    case 4:
+  //      this.talk("This food is REALLY good, I'm gonna leave a tip");
+  //      this.eating = false;
+  //      this.leaving = true;
+  //      r.rating += 0.5;
+  //      break;
         
-      case 5: 
-        this.talk("OH MY HECKING SNAPPERDOODLES! THIS FOOD IS THE BEST FOOD I'VE EVER HAD!");
-        this.eating = false;
-        this.leaving = true;
-        r.rating += 1;
-        break;
-    }
-  }
+  //    case 5: 
+  //      this.talk("OH MY HECKING SNAPPERDOODLES! THIS FOOD IS THE BEST FOOD I'VE EVER HAD!");
+  //      this.eating = false;
+  //      r.rating += 1;
+  //      break;
+  //  }
+  //}
   
   // MOVE FUNCTION (SKELETON FOR NOW UNTIL I CAN ACTUALLY FIND OUT HOW TO CODE THIS)
   
