@@ -6,7 +6,7 @@ class Customer extends Person{
   boolean crashingOut = false; // For when the customer starts CRASHING out
   boolean leaving = false;
   boolean eating = false;
-  boolean inResturant = true;
+  boolean inRestaurant = true;
   
   // Constructor
   
@@ -20,7 +20,7 @@ class Customer extends Person{
   // The two shared functions
   
   void draw(){
-    super.draw(this.inResturant); // Uses the draw function of the person class while parsing the inResturant value
+    super.draw(this.inRestaurant); // Uses the draw function of the person class while parsing the inRestaurant value
   }
   
   void talk(String s){
@@ -29,16 +29,16 @@ class Customer extends Person{
   
   //The rest of the functions
   
-  void requestWaiter(){
+  void requestServer(){
     float closestDist = 1000000; // Set this to an impossibly high number for this to work
     int i = 0; // Create an index value
-    int truei; // truei (used for actually calling the waiter later)
+    int truei; // truei (used for actually calling the Server later)
     
-    for( Waiter currWaiter : waiters){ // Make a for loop that looks through the waiters list
-      float distToWaiter = this.pos.dist(currWaiter.pos); // Find out the distance from the current waiter
+    for( Server currServer : servers){ // Make a for loop that looks through the Servers list
+      float distToServer = this.pos.dist(currServer.pos); // Find out the distance from the current Server
       
-      if(distToWaiter < closestDist && !currWaiter.takingOrder){ // IF the distance to waiter is shorter than the closestdistance ever AND the waiter is not taking an order
-        closestDist = distToWaiter; // Set closest distance to the distance of the current waiter
+      if(distToServer < closestDist && !currServer.takingOrder){ // IF the distance to Server is shorter than the closestdistance ever AND the Server is not taking an order
+        closestDist = distToServer; // Set closest distance to the distance of the current Server
         truei = i; // Set truei to i
       }
       
@@ -46,8 +46,8 @@ class Customer extends Person{
       
     }
     
-    this.talk("Excuse me I need a waiter!"); // Make the customer ask for a waiter
-    waiters[truei].takeOrder(this); // Calls the waiter's takeOrder function
+    this.talk("Excuse me I need a sServererver!"); // Make the customer ask for a Server
+    servers[truei].takeOrder(this); // Calls the Server's takeOrder function
     
   }
   
@@ -57,7 +57,7 @@ class Customer extends Person{
     switch(dieroll){ // Switch function (USE THIS INSTEAD OF ELSE IFS IN THE CASE THAT YOU HAVE MORE THAN THREE THINGS YOU NEED TO CHECK AND ITS NOT A RANGE!!!
       case 1: // If the die "Lands" on 1
         this.talk("AHH MY HAND!!!!"); // Make the customer talk
-        this.inResturant = false; // In this case, the customer broke their hand so they are hurt A LOT
+        this.inRestaurant = false; // In this case, the customer broke their hand so they are hurt A LOT
         break;
       case 2:
         this.talk("JUST BREAK ALREADY YOU DARN TABLE!");
@@ -83,7 +83,7 @@ class Customer extends Person{
     
   }
   
-  void eat(food f, resturant r){
+  void eat(food f, restaurant r){
    
     switch(f.quality){ //Check the food quality
       case 1: // If the food is one star
@@ -91,7 +91,7 @@ class Customer extends Person{
         this.patience -= 50; // Decrease their patience
         this.eating = false; // Make them stop eating
         this.leaving = true; // Make them leave
-        r.rating -= 0.5; // Decrease the resturants rating
+        r.rating -= 0.5; // Decrease the restaurants rating
         break;
         
       case 2:
@@ -106,7 +106,7 @@ class Customer extends Person{
         this.talk("This food is actually pretty good!");
         this.eating = false;
         this.leaving = true;
-        r.rating += 0.25; // Increase the resturants rating
+        r.rating += 0.25; // Increase the restaurants rating
         break;
        
       case 4:

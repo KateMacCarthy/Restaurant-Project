@@ -15,12 +15,12 @@ String location;
 
 float rentPrice;
 
-int numOfServers;
-int numOfChefs;
-int serverSkill;
-int chefSkill;
-int customerRate = 2;
-int costOfFood = 20;
+float numOfServers;
+float numOfChefs;
+float serverSkill;
+float chefSkill;
+float customerRate = 2;
+float costOfFood = 20;
 
 void setup() {
   size(1000, 600);

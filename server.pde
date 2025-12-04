@@ -11,15 +11,14 @@ class Server extends Person{
   }
   
   void moveToDish(Dish d){
-    this.vel = d.pos.sub(this.pos).normalize();
-    this.pos.add(this.vel.mult(skill));
+    this.vel = PVector.sub(d.pos, this.pos).normalize();
+    this.pos.add(PVector.mult(this.vel, skill));
   }
   
   void moveToCustomer(Customer c){
-    this.vel = c.pos.sub(this.pos).normalize();
-    this.pos.add(this.vel.mult(skill));
+    this.vel = PVector.sub(c.pos, this.pos).normalize();
+    this.pos.add(PVector.mult(this.vel, skill));
   }
-}
 }
 // If doesn't have food, pick a dish that is "readyToServe"
 // Find a customer who is free, then serving = true
