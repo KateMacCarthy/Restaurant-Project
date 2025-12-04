@@ -36,3 +36,33 @@ void createChefs(){
     chefs[i] = new Chef(x, y, chefSkill);
   }
 }
+
+void setGUIValues() {
+  if (location.equals("Downtown Toronto")) {
+    rentPrice = 5000;
+    numOfServers = NumberOfServers.setValue(6);
+    numOfChefs = NumberOfChefs.setValue(3);
+    serverSkill = ServerSkill.setValue(5);
+    chefSkill = ChefSkill.setValue(5);
+    customerRate = CustomerRate.setValue(8);
+    costOfFood = CostOfFood.setValue(40);
+  }
+  else if (location.equals("Waterloo")) {
+    rentPrice = 3000;
+    numOfServers = NumberOfServers.setValue(4);
+    numOfChefs = NumberOfChefs.setValue(2);
+    serverSkill = ServerSkill.setValue(5);
+    chefSkill = ChefSkill.setValue(5);
+    customerRate = CustomerRate.setValue(5);
+    costOfFood = CostOfFood.setValue(30);
+  }
+  else if (location.equals("Elora")) {
+    rentPrice = 2200;
+    numOfServers = NumberOfServers.setValue(2);
+    numOfChefs = NumberOfChefs.setValue(1);
+    serverSkill = ServerSkill.setValue(5);
+    chefSkill = ChefSkill.setValue(5);
+    customerRate = CustomerRate.setValue(2);
+    costOfFood = CostOfFood.setValue(20);
+  }
+}

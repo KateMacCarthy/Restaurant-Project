@@ -8,10 +8,17 @@ Server[] servers;
 
 //The values that can be adjusted by the sliders
 //They are set to the sliders inital value
-int numOfServers = 4;
-int numOfChefs = 1;
-int serverSkill = 5;
-int chefSkill = 5;
+boolean paused = true;
+
+String restaurantName;
+String location;
+
+float rentPrice;
+
+int numOfServers;
+int numOfChefs;
+int serverSkill;
+int chefSkill;
 int customerRate = 2;
 int costOfFood = 20;
 
