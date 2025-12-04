@@ -2,9 +2,10 @@ class Person {
   
   // Variables
   
-  PVector vel, pos;
+  PVector vel = new PVector();
+  PVector pos = new PVector();
   int s;
-  int r = 15;
+  int r = 30;
   color col;
   String name;
   
@@ -15,6 +16,7 @@ class Person {
     this.s = int(random(1,3)); // Randomly sets the speed from 1-3
     this.col = c; // Sets the color to be c
     this.name = s; // Sets the name to be s
+    this.vel = new PVector(0,0);
   }
   
   // Functions
@@ -28,6 +30,7 @@ class Person {
   void talk(String s){
     println(this.name + ":", s); // Displays what someone is saying in the terminal emulator
   }
+  
   
 
 }

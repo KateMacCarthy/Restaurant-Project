@@ -1,21 +1,21 @@
 class Dish{
   PVector pos;
-  float sizePlate, sizeFood, grow, price;
+  float sizePlate, sizeFood, price;
   color colPlate, colFood;
-  boolean cooked, readyToServe, served, eaten;
+  boolean cooked, readyToServe, served, eaten, taken;
   
   Dish(){
     this.pos = new PVector(0, 0);
-    this.sizePlate = 10;
+    this.sizePlate = 24;
     this.sizeFood = 0;
-    this.grow = 0;
     this.price = 0;
     this.colPlate = color(220, 220, 220);
-    this.colFood = color(255, 220, 150);
+    this.colFood = color(255, random(100, 200), 70);
     this.cooked = false;
     this.readyToServe = false;
     this.served = false;
     this.eaten = false;
+    this.taken = false;
   }
   
   void draw(){
@@ -25,8 +25,8 @@ class Dish{
     circle(this.pos.x, this.pos.y, this.sizeFood);
   }
   
-  void cook(){
-    this.sizeFood += this.grow;
+  void cook(float s){
+    this.sizeFood += (s/10);
   }
   
   void eat(){
@@ -34,7 +34,7 @@ class Dish{
   }
   
   void follow(Person p){
-    this.pos = p.pos;
+    this.pos = (new PVector(-30, 0)).add(p.pos);
   }
   
 }
