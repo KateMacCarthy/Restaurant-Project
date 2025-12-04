@@ -30,6 +30,7 @@ public void RestaurantLocationPicked(GDropList source, GEvent event) { //_CODE_:
 public void CreateRestaurantClicked(GButton source, GEvent event) { //_CODE_:CreateRestaurant:252882:
   restaurantControls.setVisible(true);
   createNewRestaurant.setVisible(false);
+  setGUIValues();
 } //_CODE_:CreateRestaurant:252882:
 
 synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:restaurantControls:326431:
@@ -38,12 +39,12 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:resta
 
 public void NumberOfServersChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfServers:708771:
   numOfServers = NumberOfServers.getValueI();
-  //createServers();
+  createServers();
 } //_CODE_:NumberOfServers:708771:
 
 public void NumberOfChefsChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfChefs:864665:
   numOfChefs = NumberOfChefs.getValueI();
-  //createChefs();
+  createChefs();
 } //_CODE_:NumberOfChefs:864665:
 
 public void ServerSkillSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:ServerSkillSlider:381628:
@@ -59,7 +60,7 @@ public void CustomerRateSliderChanged(GCustomSlider source, GEvent event) { //_C
 } //_CODE_:CustomerRateSlider:256650:
 
 public void CostOfFoodSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:CostOfFoodSlider:407025:
-  costOfFood = CustomerRateSlider.getValueI();
+  costOfFood = CostOfFoodSlider.getValueI();
 } //_CODE_:CostOfFoodSlider:407025:
 
 public void PauseButtonClicked(GButton source, GEvent event) { //_CODE_:PauseButton:921997:

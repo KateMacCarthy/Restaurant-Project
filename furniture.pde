@@ -1,4 +1,4 @@
-class Furniture{
+class Furniture {
   //Fields
   float w, h, sideLength;
   PVector pos;

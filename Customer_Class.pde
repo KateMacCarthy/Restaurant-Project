@@ -1,9 +1,3 @@
-/////////////////////////////////
-// Customer Class
-// By Dante
-// For the resturant team project
-/////////////////////////////////
-
 class Customer extends Person{
   
   // Variables
@@ -43,7 +37,7 @@ class Customer extends Person{
     for( Waiter currWaiter : waiters){ // Make a for loop that looks through the waiters list
       float distToWaiter = this.pos.dist(currWaiter.pos); // Find out the distance from the current waiter
       
-      if(distToWaiter < closestDist && currWaiter.takingOrder = false){ // IF the distance to waiter is shorter than the closestdistance ever AND the waiter is not taking an order
+      if(distToWaiter < closestDist && !currWaiter.takingOrder){ // IF the distance to waiter is shorter than the closestdistance ever AND the waiter is not taking an order
         closestDist = distToWaiter; // Set closest distance to the distance of the current waiter
         truei = i; // Set truei to i
       }
@@ -64,21 +58,27 @@ class Customer extends Person{
       case 1: // If the die "Lands" on 1
         this.talk("AHH MY HAND!!!!"); // Make the customer talk
         this.inResturant = false; // In this case, the customer broke their hand so they are hurt A LOT
+        break;
       case 2:
         this.talk("JUST BREAK ALREADY YOU DARN TABLE!");
         t.takeDamage(2); //Tells the table to take damage (in this case, two damage
+        break;
       case 3:
        this.talk("JUST BREAK ALREADY YOU DARN TABLE!");
        t.takeDamage(4);
+       break;
       case 4:
        this.talk("IM GONNA DESTROY THIS DARN THING!");
        t.takeDamage(6);
+       break;
       case 5:
        this.talk("IM GONNA DESTROY THIS DARN THING!");
        t.takeDamage(10);
+       break;
       case 6:
        this.talk("I AM SO STRONG!");
        t.destroyed = true; //Just destroys the table
+       break;
     }
     
   }
@@ -92,6 +92,7 @@ class Customer extends Person{
         this.eating = false; // Make them stop eating
         this.leaving = true; // Make them leave
         r.rating -= 0.5; // Decrease the resturants rating
+        break;
         
       case 2:
         this.talk("THIS FOOD IS actually not that bad, still a bit bummed out though");
@@ -99,24 +100,28 @@ class Customer extends Person{
         this.eating = false;
         this.leaving = true;
         r.rating -= 0.25;
+        break;
         
       case 3:
         this.talk("This food is actually pretty good!");
         this.eating = false;
         this.leaving = true;
         r.rating += 0.25; // Increase the resturants rating
+        break;
        
       case 4:
         this.talk("This food is REALLY good, I'm gonna leave a tip");
         this.eating = false;
         this.leaving = true;
         r.rating += 0.5;
+        break;
         
       case 5: 
         this.talk("OH MY HECKING SNAPPERDOODLES! THIS FOOD IS THE BEST FOOD I'VE EVER HAD!");
         this.eating = false;
         this.leaving = true;
         r.rating += 1;
+        break;
     }
   }
   

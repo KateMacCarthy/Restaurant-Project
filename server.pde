@@ -19,7 +19,7 @@ class Server extends Person{
     this.vel = c.pos.sub(this.pos).normalize();
     this.pos.add(this.vel.mult(skill));
   }
- 
+}
 }
 // If doesn't have food, pick a dish that is "readyToServe"
 // Find a customer who is free, then serving = true

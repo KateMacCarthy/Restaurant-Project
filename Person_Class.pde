@@ -1,9 +1,3 @@
-////////////////////////////
-// Person Class
-// For the resturant project
-// By: Dante
-////////////////////////////
-
 class Person {
   
   // Variables
@@ -17,8 +11,7 @@ class Person {
   // Constructor
   
   Person(int x, int y, color c, String s){
-    this.pos.x = x; // Setting the x position of pos to be x
-    this.pos.y = y; // Setting the y position of pos to be y
+    this.pos = new PVector(x, y); // Setting the x and y position of pos
     this.s = int(random(1,3)); // Randomly sets the speed from 1-3
     this.col = c; // Sets the color to be c
     this.name = s; // Sets the name to be s
