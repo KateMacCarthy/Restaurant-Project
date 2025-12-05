@@ -33,7 +33,7 @@ void setup() {
   
   createChefs();
   createDishes();
-  //createServers();
+  createServers();
   //createFurniture();
 }
 
@@ -48,15 +48,52 @@ void draw() {
   //  tables[i].drawTable();
   //}
   
+  for (int i = 0; i < servers.length; i++){
+    servers[i].draw();
+  }
+  
   for (int i = 0; i < chefs.length; i++){
     chefs[i].draw();
   }
   
   for (int i = 0; i < dishes.length; i++){
-    dishes[i].draw();
+    if (dishes[i].start == true){
+      dishes[i].draw();
+    }
   }
   
   if (paused) {
+    ////////////////////////////////////////////////SERVERSSSS/////////////////////////
+  for (int i = 0; i < servers.length; i++){
+    if (servers[i].dish == null){ // "Claim" a dish
+      for (int n = 0; n < dishes.length; n++){
+        //if dish is not cooked and is available, take it
+        if (dishes[n].readyToServe == true && dishes[n].taken == false){
+          dishes[n].taken = true;
+          servers[i].dish = dishes[n];
+          break;
+        }
+      }
+    }
+    else if (servers[i].dish != null && servers[i].serving == false){ // Go grab that dish
+      if (servers[i].pos.dist(servers[i].dish.pos) > 45){//move there
+        servers[i].moveToDish(servers[i].dish);
+      }
+      else{// server is there, now take the dish
+        servers[i].serving = true;
+      }
+    }
+    else if (servers[i].serving == true){
+      servers[i].dish.follow(servers[i]);
+      //make it go to customers, etc.
+      //
+      //
+      //
+    }
+  }
+  ////////////////////////////////////////////////SERVERSSSS ENDDD/////////////////////////
+  
+    
     for (int i = 0; i < chefs.length; i++){
       
       if (chefs[i].cooking == false && chefs[i].serving == false){
@@ -74,6 +111,7 @@ void draw() {
           for (int n = 0; n < dishes.length; n++){
             //if dish is not cooked and is available, take it
             if (dishes[n].cooked == false && dishes[n].taken == false){
+              dishes[n].start = true;
               dishes[n].taken = true;
               chefs[i].dish = dishes[n];
               break;

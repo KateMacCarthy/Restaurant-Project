@@ -19,10 +19,7 @@ void createServers(){
   servers = new Server[numOfServers];
   
   for (int i = 0; i < servers.length; i++){
-    float x = 700;
-    float y = height/2;
-    
-    servers[i] = new Server(x, y, serverSkill);
+    servers[i] = new Server(715, 575, serverSkill);
   }
 }
 
@@ -78,7 +75,7 @@ void setGUIValues() {
 
   createChefs();
   createDishes();
-  //createServers();
+  createServers();
   //createFurniture();
 }
 
