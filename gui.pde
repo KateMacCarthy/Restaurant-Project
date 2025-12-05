@@ -38,21 +38,27 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:resta
 } //_CODE_:restaurantControls:326431:
 
 public void NumberOfServersChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfServers:708771:
-  numOfServers = NumberOfServers.getValueF();
+  numOfServers = NumberOfServers.getValueI();
   createServers();
 } //_CODE_:NumberOfServers:708771:
 
 public void NumberOfChefsChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfChefs:864665:
-  numOfChefs = NumberOfChefs.getValueF();
+  resetBackground();
+  numOfChefs = NumberOfChefs.getValueI();
   createChefs();
+  createDishes();
 } //_CODE_:NumberOfChefs:864665:
 
 public void ServerSkillSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:ServerSkillSlider:381628:
   serverSkill = ServerSkillSlider.getValueI();
+  createServers();
 } //_CODE_:ServerSkillSlider:381628:
 
 public void ChefSkillSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:ChefSkillSlider:495450:
+  resetBackground();
   chefSkill = ChefSkillSlider.getValueI();
+  createChefs();
+  createDishes();
 } //_CODE_:ChefSkillSlider:495450:
 
 public void CustomerRateSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:CustomerRateSlider:256650:
@@ -65,13 +71,12 @@ public void CostOfFoodSliderChanged(GCustomSlider source, GEvent event) { //_COD
 
 public void PauseButtonClicked(GButton source, GEvent event) { //_CODE_:PauseButton:921997:
   paused = !paused;
-  setGUIValues();
   
   if (paused) {
-    PauseButton.setText("Resume");
+    PauseButton.setText("Pause");
   }
   else {
-    PauseButton.setText("Pause");
+    PauseButton.setText("Resume");
   }
 } //_CODE_:PauseButton:921997:
 
@@ -107,7 +112,7 @@ public void createGUI(){
   label1.setOpaque(false);
   torontoLabel = new GLabel(createNewRestaurant, 5, 120, 120, 20);
   torontoLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  torontoLabel.setText("Downtown Toronto");
+  torontoLabel.setText("Toronto");
   torontoLabel.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   torontoLabel.setOpaque(false);
   waterlooLabel = new GLabel(createNewRestaurant, 130, 120, 120, 20);

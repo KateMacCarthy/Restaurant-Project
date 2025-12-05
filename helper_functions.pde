@@ -16,7 +16,7 @@ void createFurniture() {
 }
 
 void createServers(){ 
-  servers = new Server[int(numOfServers)];
+  servers = new Server[numOfServers];
   
   for (int i = 0; i < servers.length; i++){
     float x = 700;
@@ -27,28 +27,27 @@ void createServers(){
 }
 
 void createChefs(){ 
-  chefs = new Chef[int(numOfChefs)];
+  chefs = new Chef[numOfChefs];
   
   for (int i = 0; i < chefs.length; i++){
-    float x = 800;
-    float y = height/2;
-    
-    chefs[i] = new Chef(x, y, chefSkill);
+    chefs[i] = new Chef(800, 30 + i*(height/chefs.length), chefSkill);
   }
+}
+
+void createDishes() {
+  dishes = new Dish[10];
+  
+  for (int i = 0; i < dishes.length; i++){
+    dishes[i] = new Dish();
+  }
+  
 }
 
 void setGUIValues() {
   serverSkill = 5;
   chefSkill = 5;
   
-  if (location.equals("Downtown Toronto")) {
-    rentPrice = 5000;
-    numOfServers = 6;
-    numOfChefs = 3;
-    customerRate = 8;
-    costOfFood = 40;
-  }
-  else if (location.equals("Waterloo")) {
+  if (location.equals("Waterloo")) {
     rentPrice = 3000;
     numOfServers = 4;
     numOfChefs = 2;
@@ -63,11 +62,11 @@ void setGUIValues() {
     costOfFood = 20;
   }
   else {
-    rentPrice = 0;
-    numOfServers = 1;
-    numOfChefs = 1;
-    customerRate = 1;
-    costOfFood = 10;
+    rentPrice = 5000;
+    numOfServers = 6;
+    numOfChefs = 3;
+    customerRate = 8;
+    costOfFood = 40; 
   }
   
   NumberOfServers.setValue(numOfServers);
@@ -77,4 +76,16 @@ void setGUIValues() {
   CustomerRateSlider.setValue(customerRate);
   CostOfFoodSlider.setValue(costOfFood);
 
+  createChefs();
+  createDishes();
+  //createServers();
+  //createFurniture();
+}
+
+void resetBackground(){
+  background(225);
+  fill(70);
+  rect(750, 0, 40, 600);
+  fill(180);
+  rect(960, 0, 40, 600);
 }

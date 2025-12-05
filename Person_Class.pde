@@ -31,8 +31,6 @@ class Person {
     println(this.name + ":", s); // Displays what someone is saying in the terminal emulator
   }
   
-  
-
 }
 
 // END OF CODE

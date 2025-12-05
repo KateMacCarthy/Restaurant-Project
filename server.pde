@@ -2,7 +2,7 @@ class Server extends Person{
   float skill;
   boolean hasFood, serving;
   
-  Server(int x, int y, float s){
+  Server(float x,float y, float s){
     super(x, y, color(50, 80, 155), "server");
     this.skill = s;
     this.vel = new PVector(0, 0);

@@ -4,7 +4,7 @@ class Chef extends Person{
   Dish dish;
   boolean cooking, serving;
   
-  Chef(int x, int y, float s){
+  Chef(float x, float y, float s){
     super(x, y, color(255), "chef");
     this.skill = s;
     this.vel = new PVector(0, 0);
@@ -12,8 +12,6 @@ class Chef extends Person{
     this.serving = false;
     dish = null;
   }
-}
-  
   
   void cook(){
    this.vel = new PVector(0, 0); 
@@ -28,8 +26,7 @@ class Chef extends Person{
     this.vel = new PVector(2, 0);
     this.pos.add(this.vel);
   }
-  
-}
+}  
 //// Array of chefs
 //// equal aray of dishes
 
