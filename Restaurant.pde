@@ -35,6 +35,7 @@ void setup() {
   createDishes();
   createServers();
   //createFurniture();
+  
 }
 
 void draw() {
@@ -93,67 +94,73 @@ void draw() {
   }
   ////////////////////////////////////////////////SERVERSSSS ENDDD/////////////////////////
   
+  ////////////////////////////////////////////////CHEFFSSSSSS/////////////////////////
+  for (int i = 0; i < chefs.length; i++){
     
-    for (int i = 0; i < chefs.length; i++){
-      
-      if (chefs[i].cooking == false && chefs[i].serving == false){
-        if (( 960-chefs[i].pos.x) > 15){ //If not at stove, go there
-          chefs[i].goToStove();
-        }
-        else{
-          chefs[i].cooking = true;
-        }
+    if (chefs[i].cooking == false && chefs[i].serving == false){
+      if (( 960-chefs[i].pos.x) > 15){ //If not at stove, go there
+        chefs[i].goToStove();
       }
-      
-      else if (chefs[i].serving == false && chefs[i].cooking == true){ //They are cooking
-        //If don't have a dish, get a dish to cook
-        if (chefs[i].dish == null){
-          for (int n = 0; n < dishes.length; n++){
-            //if dish is not cooked and is available, take it
-            if (dishes[n].cooked == false && dishes[n].taken == false){
-              dishes[n].start = true;
-              dishes[n].taken = true;
-              chefs[i].dish = dishes[n];
-              break;
-            }
-          }
-        }
-        //Has dish!
-        else if (chefs[i].dish != null){
-          //Summon the dish to the stove!
-          chefs[i].dish.pos = (new PVector(30, 0)).add(chefs[i].pos);
-          //While it's not cooked, keep cooking
-          if (chefs[i].dish.sizeFood < (chefs[i].dish.sizePlate-5)){
-            chefs[i].dish.cook(chefs[i].skill);
-          }
-          //If it's done cooking, stop cooking, begin serving
-          else{
-            chefs[i].dish.cooked = true;
-            chefs[i].serving = true;
-            chefs[i].cooking = false;
-          }
-        }
-        else{
-          //no dishes avaible
-        }
-      }
-      
-      //Bring to bar
       else{
-        if ((chefs[i].pos.x-750) > random(45, 55)){ //If not at stove, go there
-          chefs[i].serve();
-          chefs[i].dish.follow(chefs[i]);
+        chefs[i].cooking = true;
+      }
+    }
+    
+    else if (chefs[i].serving == false && chefs[i].cooking == true){ //They are cooking
+      //If don't have a dish, get a dish to cook
+      if (chefs[i].dish == null){
+        for (int n = 0; n < dishes.length; n++){
+          //if dish is not cooked and is available, take it
+          if (dishes[n].cooked == false && dishes[n].taken == false){
+            dishes[n].start = true;
+            dishes[n].taken = true;
+            chefs[i].dish = dishes[n];
+            break;
+          }
         }
-        else{// if they're there
+        if (chefs[i].dish == null){//ran out of places
+          textSize(15);
+          fill(0);
+          text("Waiting for plates...", chefs[i].pos.x-125, chefs[i].pos.y-20);
+        }
+      }
+      //Has dish!
+      else if (chefs[i].dish != null){
+        //Summon the dish to the stove!
+        chefs[i].dish.pos = (new PVector(30, 0)).add(chefs[i].pos);
+        //WHile it's not cooked, keep cooking
+        if (chefs[i].dish.sizeFood < (chefs[i].dish.sizePlate-5)){
+          chefs[i].dish.cook(chefs[i].skill);
+        }
+        //If it's done cooking, stop cooking, begin serving
+        else{
+          chefs[i].dish.cooked = true;
+          chefs[i].serving = true;
           chefs[i].cooking = false;
-          chefs[i].serving = false;
-          chefs[i].dish.taken = false;
-          chefs[i].dish = null;
         }
       }
       
     }
-  
+    
+    //Bring to bar
+    else{
+      if ((chefs[i].pos.x-750) > random(45, 55)){ //If not at stove, go there
+        chefs[i].serve();
+        chefs[i].dish.follow(chefs[i]);
+      }
+      else{// if they're there
+        chefs[i].cooking = false;
+        chefs[i].serving = false;
+        chefs[i].dish.readyToServe = true;
+        chefs[i].dish.taken = false;
+        chefs[i].dish = null;
+      }
+    }
+   
   }
+  ////////////////////////////////////////////////CHEFFSSSSSS ENDDDD/////////////////////////
   
-}
+  } //Boundary of "pause"
+  
+  
+} //Boundary of "draw"
