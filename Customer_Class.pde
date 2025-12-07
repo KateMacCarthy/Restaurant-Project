@@ -23,7 +23,6 @@ class Customer extends Person{
   void draw(){
     super.draw(); // Uses the draw function of the person class while parsing the inRestaurant value
   }
-}
 
     //void talk(String s){
   //  super.talk(s); // Uses the talk function of the person class
@@ -163,10 +162,53 @@ class Customer extends Person{
   //  }
   //}
   
+  // findChair function
+  
+  Furniture findChair(){
+    float closestDist = 1000000; // Set this to an impossibly high number for this to work
+    int i = 0; // Create an index value
+    int truei = 0; // truei (used for actually returning the right chair)
+    
+    for( Furniture currChair : chairs){ // Make a for loop that looks through the chairs list
+      float distToChair = this.pos.dist(currChair.pos); // Find out the distance from the current chair
+      
+      if(distToChair < closestDist && !currChair.taken){ // IF the distance to chair is shorter than the closestdistance ever AND the chair is not taking an order
+        closestDist = distToChair; // Set closest distance to the distance of the current chair
+        truei = i;
+      }
+      i++;
+    }
+     return chairs[truei];
+  }
+  
+  //moveToChair
+  
+  void moveToChair(Furniture c){
+    PVector displacement = PVector.sub(c.pos, this.pos); // Find out the displacement between the chair and the customer
+    float angle = displacement.heading(); // Find out the angle of the chair to the customer
+    PVector direction = new PVector ( cos(angle), sin(angle) ); // Properly calculate the "direction" (more or so where the vector is pointing) that the customer should be going
+    this.vel = direction.mult( this.s ); // Make the velocity the "direction" variable multiplied by the speed of the customer
+  }
+  
+  
   // MOVE FUNCTION (SKELETON FOR NOW UNTIL I CAN ACTUALLY FIND OUT HOW TO CODE THIS)
   
-  //void move(){
-  // this.pos.add(this.vel.mult(s));
-  //}
+  void move(){
+    
+    if(!eating && !sitting && !leaving &&!crashingOut){ //If the customer just entered the restaurant
+      Furniture chair = this.findChair(); // Find the closest chair
+      this.moveToChair(chair); // Move to the chiar
+      
+      this.pos.add(this.vel);   
+    
+      if(chair.pos.dist(this.pos) <= this.r){
+        this.pos.x = chair.pos.x + (chair.sideLength / 2);
+        this.pos.y = chair.pos.y + (chair.sideLength / 2);
+        this.sitting = true;
+      }
+      
+    }
+  }
+ }
 
 // END OF CODE
