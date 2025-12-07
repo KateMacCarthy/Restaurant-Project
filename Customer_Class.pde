@@ -7,6 +7,7 @@ class Customer extends Person{
   boolean leaving = false;
   boolean eating = false;
   boolean inRestaurant = true;
+  boolean beingServed = false;
   boolean sitting = false;
   
   // Constructor

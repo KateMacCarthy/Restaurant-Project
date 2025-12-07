@@ -15,6 +15,14 @@ void createFurniture() {
   }
 }
 
+//void createCustomers(){ 
+//  customers = new Customer[numOfCustomers];
+  
+//  for (int i = 0; i < customers.length; i++){
+//    customers[i] = new Customer(0, 300, "Customer");
+//  }
+//}
+
 void createServers(){ 
   servers = new Server[numOfServers];
   

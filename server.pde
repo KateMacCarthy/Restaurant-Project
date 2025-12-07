@@ -1,6 +1,7 @@
 class Server extends Person{
   float skill;
   Dish dish;
+  Customer customer;
   boolean hasFood, serving;
   
   Server(float x,float y, float s){
@@ -10,6 +11,7 @@ class Server extends Person{
     this.serving = false;
     this.hasFood = false;
     this.dish = null;
+    this.customer = null;
   }
   
   void moveToDish(Dish d){
@@ -24,6 +26,11 @@ class Server extends Person{
   void moveToCustomer(Customer c){
     this.vel = new PVector(c.pos.x, c.pos.y).sub(this.pos).normalize();
     this.pos.add(this.vel.mult(skill));
+  }
+  
+  void moveToCustomerLane(Customer c){
+    float x = c.pos.x;
+    
   }
 }
 // If doesn't have food, pick a dish that is "readyToServe"
