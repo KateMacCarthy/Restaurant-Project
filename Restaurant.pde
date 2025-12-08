@@ -158,6 +158,6 @@ void draw() {
     }
     ////////////////////////////////////////////////CUSTOMERS ENDDD/////////////////////////
   
-  }
+  }//End of paused if statement
   
-}
+}//End of draw

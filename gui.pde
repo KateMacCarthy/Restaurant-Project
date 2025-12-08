@@ -254,7 +254,7 @@ public void createGUI(){
   CostOfFoodSlider.setOpaque(false);
   CostOfFoodSlider.addEventHandler(this, "CostOfFoodSliderChanged");
   PauseButton = new GButton(restaurantControls, 80, 310, 80, 30);
-  PauseButton.setText("Resume");
+  PauseButton.setText("Pause");
   PauseButton.setLocalColorScheme(GCScheme.CYAN_SCHEME);
   PauseButton.addEventHandler(this, "PauseButtonClicked");
   createNewRestaurant.loop();

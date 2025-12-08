@@ -177,8 +177,8 @@ class Customer extends Person{
       if(distToChair < closestDist && !currChair.taken){ // IF the distance to chair is shorter than the closestdistance ever AND the chair is not taking an order
         closestDist = distToChair; // Set closest distance to the distance of the current chair
         truei = i;
+        currChair.taken = true;
       }
-      currChair.taken = true;
       i++;
     }
     return chairs[truei];
