@@ -2,7 +2,7 @@ class Dish{
   PVector pos;
   float sizePlate, sizeFood, price;
   color colPlate, colFood;
-  boolean start, cooked, readyToServe, served, eaten, taken;
+  boolean start, cooked, readyToServe, eaten, taken;
   
   Dish(){
     this.pos = new PVector(0, 0);
@@ -14,7 +14,6 @@ class Dish{
     this.start = true;
     this.cooked = false;
     this.readyToServe = false;
-    this.served = false;
     this.eaten = false;
     this.taken = false;
   }
