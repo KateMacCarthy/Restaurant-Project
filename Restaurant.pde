@@ -74,10 +74,12 @@ void draw() {
           }
         }
         else if (servers[i].customer != null){
-          //make it go to customers, etc.
-          //need table & chair locations
-          //hard code lanes ^-^
-          //
+          //if (servers[i].pos.dist(servers[i].customer.pos) > 30){
+          //  servers[i].moveToCustomer();
+          //}
+          //else{
+          //  servers[i].serveCustomer();
+          //}
         }
         
       }
