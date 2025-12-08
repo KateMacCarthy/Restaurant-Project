@@ -6,8 +6,7 @@ Furniture[] tables = new Furniture[6];
 Server[] servers;
 Dish[] dishes;
 Chef[] chefs;
-
-Customer[] customers = new Customer[5];
+Customer[] customers;
 //Customer customer = new Customer(0, 300, "customer");
 //Chef chef = new Chef(800, 30, 1);
 
@@ -20,9 +19,9 @@ String location = " ";
 
 float rentPrice;
 
-int numOfServers, numOfChefs;
+int numOfServers, numOfChefs, customerRate;
 float serverSkill, chefSkill;
-float customerRate, costOfFood;
+float costOfFood;
 
 void setup() {
   size(1000, 600);
@@ -35,10 +34,7 @@ void setup() {
   createDishes();
   createServers();
   createFurniture();
-  
-  for (int i = 0; i < customers.length; i++){
-    customers[i] = new Customer(0, 300, "Customer");
-  }
+  createCustomers();
 }
 
 void draw() {

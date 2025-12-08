@@ -62,7 +62,8 @@ public void ChefSkillSliderChanged(GCustomSlider source, GEvent event) { //_CODE
 } //_CODE_:ChefSkillSlider:495450:
 
 public void CustomerRateSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:CustomerRateSlider:256650:
-  customerRate = CustomerRateSlider.getValueF();
+  customerRate = CustomerRateSlider.getValueI();
+  createCustomers();
 } //_CODE_:CustomerRateSlider:256650:
 
 public void CostOfFoodSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:CostOfFoodSlider:407025:
@@ -235,7 +236,7 @@ public void createGUI(){
   CostOfFoodLabel.setOpaque(false);
   CustomerRateSlider = new GCustomSlider(restaurantControls, 10, 250, 100, 45, "grey_blue");
   CustomerRateSlider.setShowValue(true);
-  CustomerRateSlider.setLimits(2, 1, 10);
+  CustomerRateSlider.setLimits(10, 8, 24);
   CustomerRateSlider.setNbrTicks(10);
   CustomerRateSlider.setStickToTicks(true);
   CustomerRateSlider.setShowTicks(true);

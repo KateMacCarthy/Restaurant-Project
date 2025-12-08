@@ -15,13 +15,13 @@ void createFurniture() {
   }
 }
 
-//void createCustomers(){ 
-//  customers = new Customer[numOfCustomers];
+void createCustomers(){ 
+  customers = new Customer[customerRate];
   
-//  for (int i = 0; i < customers.length; i++){
-//    customers[i] = new Customer(0, 300, "Customer");
-//  }
-//}
+  for (int i = 0; i < customers.length; i++){
+    customers[i] = new Customer(0, 300, "Customer");
+  }
+}
 
 void createServers(){ 
   servers = new Server[numOfServers];
@@ -56,21 +56,21 @@ void setGUIValues() {
     rentPrice = 3000;
     numOfServers = 4;
     numOfChefs = 2;
-    customerRate = 5;
+    customerRate = 15;
     costOfFood = 30;
   }
   else if (location.equals("Elora")) {
     rentPrice = 2200;
     numOfServers = 2;
     numOfChefs = 1;
-    customerRate = 2;
+    customerRate = 10;
     costOfFood = 20;
   }
   else {
     rentPrice = 5000;
     numOfServers = 6;
     numOfChefs = 3;
-    customerRate = 8;
+    customerRate = 24;
     costOfFood = 40; 
   }
   
@@ -84,7 +84,8 @@ void setGUIValues() {
   createChefs();
   createDishes();
   createServers();
-  //createFurniture();
+  createFurniture();
+  createCustomers();
 }
 
 void resetBackground(){

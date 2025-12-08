@@ -179,6 +179,7 @@ class Customer extends Person{
       }
       i++;
     }
+    
      return chairs[truei];
   }
   
@@ -196,7 +197,7 @@ class Customer extends Person{
   
   void move(){
     
-    if(!eating && !sitting && !leaving &&!crashingOut){ //If the customer just entered the restaurant
+    if(!eating && !sitting && !leaving && !crashingOut){ //If the customer just entered the restaurant
       Furniture chair = this.findChair(); // Find the closest chair
       this.moveToChair(chair); // Move to the chiar
       
