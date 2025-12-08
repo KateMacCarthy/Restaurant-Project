@@ -94,4 +94,6 @@ void resetBackground(){
   rect(750, 0, 40, 600);
   fill(180);
   rect(960, 0, 40, 600);
+  fill(255);
+  rect(0, 400, 200, 200);
 }
