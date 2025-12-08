@@ -40,6 +40,7 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:resta
 public void NumberOfServersChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfServers:708771:
   numOfServers = NumberOfServers.getValueI();
   createServers();
+  createDishes();
 } //_CODE_:NumberOfServers:708771:
 
 public void NumberOfChefsChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfChefs:864665:

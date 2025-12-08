@@ -7,8 +7,6 @@ Server[] servers;
 Dish[] dishes;
 Chef[] chefs;
 Customer[] customers;
-//Customer customer = new Customer(0, 300, "customer");
-//Chef chef = new Chef(800, 30, 1);
 
 //The values that can be adjusted by the sliders
 //They are set to the sliders inital value
@@ -38,33 +36,9 @@ void setup() {
 }
 
 void draw() {
-  resetBackground();
-  
-  for (int i = 0; i < chairs.length; i++){
-    chairs[i].drawChair();
-  }
-  
-  //for (int i = 0; i < tables.length; i++){
-  //  tables[i].drawTable();
-  //}
-  
-  for (int i = 0; i < customers.length; i++){
-    customers[i].draw();
-  }
-  
-  for (int i = 0; i < servers.length; i++){
-    servers[i].draw();
-  }
-  
-  for (int i = 0; i < chefs.length; i++){
-    chefs[i].draw();
-  }
-  
-  for (int i = 0; i < dishes.length; i++){
-    if (dishes[i].start == true){
-      dishes[i].draw();
-    }
-  }
+  resetBackground();  //Function to reset backgroud and add boxes
+  drawObjects(); //Function to draw all objects
+  drawPeople(); //Function to draw all people
   
   if (paused) {
     ////////////////////////////////////////////////SERVERSSSS/////////////////////////

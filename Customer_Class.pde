@@ -177,10 +177,10 @@ class Customer extends Person{
         closestDist = distToChair; // Set closest distance to the distance of the current chair
         truei = i;
       }
+      currChair.taken = true;
       i++;
     }
-    
-     return chairs[truei];
+    return chairs[truei];
   }
   
   //moveToChair
