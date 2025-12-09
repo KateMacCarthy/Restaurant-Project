@@ -16,7 +16,7 @@ class Server extends Person{
     this.customerSeat = "";
   }
   
-  void moveToDish(Dish d){
+  void moveToDish(Dish d){///Edit boundaries for lanes
     //If they're not at ends of lane yet
     if (this.pos.x < 715){
       //if they are not in a lane
@@ -69,52 +69,60 @@ class Server extends Person{
     
     /////////////////Actually move/////////////////
     if (this.customerSeat == "left" || this.customerSeat == "right"){
-      //go to entrance of lane
-      if (abs(this.pos.y-y) > 110){
-        this.vel = new PVector(700, y).sub(this.pos).normalize();
+      println("Left Right");
+      //go to entrance of lane (in middle right now)
+      if ((abs(this.pos.y-y) < 100) && (abs(this.pos.x-x) > 200)){
+        this.vel = new PVector(710, y+100).sub(this.pos).normalize();
+        this.pos.add(this.vel.mult(skill));
+      }
+      ////go to entrance of lane
+      else if (abs(this.pos.y-y) > 110){
+        this.vel = new PVector(710, y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
       //walk down lane
-      else if (abs(this.pos.x-x) > 35){
+      else if (abs(this.pos.x-x) > 30){
         this.vel = new PVector(x, this.pos.y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
       //walk closer to person
-      else if (this.pos.dist(this.customer.pos) > 30){
+      else if (this.pos.dist(this.customer.pos) > 0){
         this.vel = new PVector(x, y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
     }
-    else if (this.customerSeat == "up"){
+    else if (this.customerSeat == "up"){ //////Distance-ing fixed
+      println("up");
       //go to entrance of lane
-      if (abs(this.pos.y-(y-25)) > 15){
-        this.vel = new PVector(700, y-25).sub(this.pos).normalize();
+      if (abs(this.pos.y-(y-45)) > 10){
+        this.vel = new PVector(710, y-45).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
       //walk down lane
-      else if (abs(this.pos.x-x) > 60){
+      else if (abs(this.pos.x-x) > 30){
         this.vel = new PVector(x, this.pos.y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
       //walk closer to person
-      else if (this.pos.dist(this.customer.pos) > 30){
+      else if (this.pos.dist(this.customer.pos) > 0){
         this.vel = new PVector(x, y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
     }
     else{
+      println("down");
       //go to entrance of lane
-      if (abs(this.pos.y-(y+25)) > 15){
-        this.vel = new PVector(700, y+25).sub(this.pos).normalize();
+      if (abs(this.pos.y-(y+45)) > 15){
+        this.vel = new PVector(710, y+45).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
       //walk down lane
-      else if (abs(this.pos.x-x) > 60){
+      else if (abs(this.pos.x-x) > 30){
         this.vel = new PVector(x, this.pos.y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
       //walk closer to person
-      else if (this.pos.dist(this.customer.pos) > 30){
+      else if (this.pos.dist(this.customer.pos) > 0){
         this.vel = new PVector(x, y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
@@ -125,16 +133,16 @@ class Server extends Person{
   void serveCustomer(){
     //place dish in front of customer
     if (this.customerSeat == "left"){
-      this.dish.pos = new PVector(this.customer.pos.x+30, this.customer.pos.y);
+      this.dish.pos = new PVector(this.customer.pos.x+45, this.customer.pos.y);
     }
     else if (this.customerSeat == "right"){
-      this.dish.pos = new PVector(this.customer.pos.x-30, this.customer.pos.y);
+      this.dish.pos = new PVector(this.customer.pos.x-45, this.customer.pos.y);
     }
     else if (this.customerSeat == "up"){
-      this.dish.pos = new PVector(this.customer.pos.x, this.customer.pos.y+30);
+      this.dish.pos = new PVector(this.customer.pos.x, this.customer.pos.y+45);
     }
     else{
-      this.dish.pos = new PVector(this.customer.pos.x, this.customer.pos.y-30);
+      this.dish.pos = new PVector(this.customer.pos.x, this.customer.pos.y-45);
     }
     //reset booleans
     this.customer.dish = this.dish;

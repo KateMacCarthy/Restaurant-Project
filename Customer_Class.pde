@@ -174,7 +174,7 @@ class Customer extends Person{
     for( Furniture currChair : chairs){ // Make a for loop that looks through the chairs list
       float distToChair = this.pos.dist(currChair.pos); // Find out the distance from the current chair
       
-      if(distToChair < closestDist && !currChair.taken){ // IF the distance to chair is shorter than the closestdistance ever AND the chair is not taking an order
+      if((distToChair < closestDist) && !currChair.taken){ // IF the distance to chair is shorter than the closestdistance ever AND the chair is not taking an order
         closestDist = distToChair; // Set closest distance to the distance of the current chair
         truei = i;
         currChair.taken = true;

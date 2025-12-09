@@ -52,6 +52,7 @@ void draw() {
             break;
           }
         }
+        ////////wander around if nothing to do///////
       }
       else if (servers[i].dish != null && servers[i].serving == false){ // Go grab that dish
         if (servers[i].pos.dist(servers[i].dish.pos) > 45){//move there
@@ -74,12 +75,12 @@ void draw() {
           }
         }
         else if (servers[i].customer != null){
-          //if (servers[i].pos.dist(servers[i].customer.pos) > 30){
-          //  servers[i].moveToCustomer();
-          //}
-          //else{
-          //  servers[i].serveCustomer();
-          //}
+          if (servers[i].pos.dist(servers[i].customer.pos) > 50){
+            servers[i].moveToCustomer();
+          }
+          else{
+            servers[i].serveCustomer();
+          }
         }
         
       }
