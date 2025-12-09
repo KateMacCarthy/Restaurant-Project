@@ -64,7 +64,7 @@ void createChefs(){
   chefs = new Chef[numOfChefs];
   
   for (int i = 0; i < chefs.length; i++){
-    chefs[i] = new Chef(800, 30 + i*(height/chefs.length), chefSkill);
+    chefs[i] = new Chef(945, 30 + i*(height/chefs.length), chefSkill);
   }
 }
 
@@ -156,4 +156,28 @@ void resetBackground(){
   rect(960, 0, 40, 600);
   fill(255);
   rect(0, 0, 600, 100);
+}
+
+void resetGUIValues() {
+  resetBackground();
+  
+  numOfServers = NumberOfServers.getValueI();
+  numOfChefs = NumberOfChefs.getValueI();
+  serverSkill = ServerSkillSlider.getValueI();
+  chefSkill = ChefSkillSlider.getValueI();
+  customerRate = CustomerRateSlider.getValueI();
+  costOfFood = CostOfFoodSlider.getValueF();
+  
+  NumberOfServers.setValue(numOfServers);
+  NumberOfChefs.setValue(numOfChefs);
+  ServerSkillSlider.setValue(serverSkill);
+  ChefSkillSlider.setValue(chefSkill);
+  CustomerRateSlider.setValue(customerRate);
+  CostOfFoodSlider.setValue(costOfFood);
+  
+  createChefs();
+  createDishes();
+  createServers();
+  createFurniture();
+  createCustomers();
 }
