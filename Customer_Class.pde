@@ -212,6 +212,24 @@ class Customer extends Person{
       
     }
   }
+  
+  void eat(Dish d){
+    if (d.sizeFood >0){
+      d.sizeFood -= 0.1;
+    }
+    else{
+      //Reset dish
+      d.cooked = false;
+      d.readyToServe = false;
+      d.taken = false;
+      this.eating = false;
+      this.beingServed = false;
+      this.sitting = false;
+      this.leaving = true;
+      this.dish = null;
+    }
+  }
+  
  }
 
 // END OF CODE

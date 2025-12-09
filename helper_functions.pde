@@ -101,9 +101,7 @@ void drawObjects() {
   }
   
   for (int i = 0; i < dishes.length; i++){
-    if (dishes[i].start == true){
-      dishes[i].draw();
-    }
+    dishes[i].draw();
   }
   
 }
