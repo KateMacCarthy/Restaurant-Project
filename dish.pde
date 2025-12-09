@@ -5,7 +5,7 @@ class Dish{
   boolean cooked, readyToServe, taken;
   
   Dish(){
-    this.pos = new PVector(0, 0);
+    this.pos = new PVector(-100, 0);
     this.sizePlate = 24;
     this.sizeFood = 0;
     this.price = 0;
