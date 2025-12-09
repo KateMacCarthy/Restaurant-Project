@@ -103,7 +103,6 @@ void draw() {
           for (int n = 0; n < dishes.length; n++){
             //if dish is not cooked and is available, take it
             if (dishes[n].cooked == false && dishes[n].taken == false){
-              dishes[n].start = true;
               dishes[n].taken = true;
               currChef.dish = dishes[n];
               break;
@@ -154,6 +153,9 @@ void draw() {
     ////////////////////////////////////////////////CUSTOMERS/////////////////////////
     for (int i = 0; i < customers.length; i++){
       customers[i].move();
+      if (customers[i].eating == true){
+        customers[i].eat(customers[i].dish);
+      }
     }
     ////////////////////////////////////////////////CUSTOMERS ENDDD/////////////////////////
   
