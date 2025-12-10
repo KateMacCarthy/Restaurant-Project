@@ -26,7 +26,7 @@ float costOfFood;
 void setup() {
   //Sets up the size and background colour of the screeen
   size(1000, 600);
-  background(225);
+  background(0);
   
   //The images that are used as flooring
   floor1 = loadImage("floor.jpg");
@@ -42,9 +42,9 @@ void setup() {
 }
 
 void draw() {
-  resetBackground();  //Function to reset backgroud and add boxes
   
   if (restaurantCreated) { //If the restaurant has been created then draw
+    resetBackground(); //Function to reset backgroud and add boxes
     displayProfit();
     drawDishes(); //Function to draw dishes
     drawPeople(); //Function to draw all people
