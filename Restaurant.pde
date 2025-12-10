@@ -1,4 +1,5 @@
 import g4p_controls.*;
+PImage floor1, floor2;
 
 //Global Variables
 Furniture[] chairs = new Furniture[24];
@@ -25,6 +26,10 @@ float costOfFood;
 void setup() {
   size(1000, 600);
   background(225);
+  floor1 = loadImage("floor.jpg");
+  floor2 = loadImage("FloorTexture.jpg");
+  floor1.resize(150, 150);
+  floor2.resize(200, 150);
   createGUI();
   setGUIValues();
   restaurantControls.setVisible(false);
@@ -52,7 +57,9 @@ void draw() {
             break;
           }
         }
-        ////////wander around if nothing to do///////
+        if (currServer.dish == null){
+          currServer.moveToStart();
+        }
       }
       else if (currServer.dish != null && currServer.serving == false){ // Go grab that dish
         if (currServer.pos.dist(currServer.dish.pos) > 45){//move there

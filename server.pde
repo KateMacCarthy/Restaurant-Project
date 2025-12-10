@@ -16,11 +16,43 @@ class Server extends Person{
     this.customerSeat = "";
   }
   
+  void moveToStart(){
+    //If they're not at ends of lane yet
+    if (this.pos.x < 715){
+      //if they are not in a lane
+      if ((130<this.pos.y && this.pos.y<340) || (360<this.pos.y && this.pos.y<570)){
+        //Closest to top lane
+        if (abs(this.pos.y - 125) < abs(this.pos.y - 350)){
+          this.pos.add(new PVector(0, -this.skill));
+        }
+        //Closest to middle lane
+        else if (abs(this.pos.y - 350) < abs(this.pos.y - 575)){
+          this.vel = new PVector(0, 350-this.pos.y).normalize();
+          this.pos.add(this.vel.mult(this.skill));
+        }
+        //Closest to bottom lane
+        else{
+          this.pos.add(new PVector(0, this.skill));
+        }
+      }
+      else{ //Walk to end of lane
+        this.pos.add(new PVector(this.skill, 0));
+      }
+    }
+    //From ends of lanes, go to beginning
+    else{
+      if (this.pos.dist(new PVector(725, this.pos.y)) > 15){
+        this.vel = new PVector(725, this.pos.y).sub(this.pos).normalize();
+        this.pos.add(this.vel.mult(skill));
+      }
+    }
+  }
+  
   void moveToDish(Dish d){///Edit boundaries for lanes
     //If they're not at ends of lane yet
     if (this.pos.x < 715){
       //if they are not in a lane
-      if ((150<this.pos.y && this.pos.y<320) || (380<this.pos.y && this.pos.y<550)){
+      if ((130<this.pos.y && this.pos.y<340) || (360<this.pos.y && this.pos.y<570)){
         //Closest to top lane
         if (abs(this.pos.y - 125) < abs(this.pos.y - 350)){
           this.pos.add(new PVector(0, -this.skill));

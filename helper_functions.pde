@@ -148,6 +148,16 @@ void setGUIValues() {
 
 void resetBackground(){
   background(225);
+  for(int x = 0; x < 5; x++){
+    for(int y = 0; y < 4; y++){
+      image(floor1, x*150, y*150);
+    }
+  }
+  for(int x = 4; x < 5; x++){
+    for(int y = 0; y < 4; y++){
+      image(floor2, (x-0.15)*200, y*150);
+    }
+  }
   fill(70);
   rect(750, 0, 40, 600);
   fill(180);
