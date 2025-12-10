@@ -11,6 +11,7 @@ Customer[] customers;
 //The values that can be adjusted by the sliders
 //They are set to the sliders inital value
 boolean paused = true;
+boolean restaurantCreated = false;
 
 String restaurantName;
 String location = " ";
@@ -32,8 +33,10 @@ void setup() {
 
 void draw() {
   resetBackground();  //Function to reset backgroud and add boxes
-  drawObjects(); //Function to draw all objects
-  drawPeople(); //Function to draw all people
+  if (restaurantCreated) {
+    drawObjects(); //Function to draw all objects
+    drawPeople(); //Function to draw all people
+  }
   
   if (paused) {
     ////////////////////////////////////////////////SERVERSSSS/////////////////////////

@@ -1,4 +1,3 @@
-
 class Chef extends Person{
   float skill;
   Dish dish;

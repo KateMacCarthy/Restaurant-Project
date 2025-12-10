@@ -30,6 +30,7 @@ public void RestaurantLocationPicked(GDropList source, GEvent event) { //_CODE_:
 public void CreateRestaurantClicked(GButton source, GEvent event) { //_CODE_:CreateRestaurant:252882:
   restaurantControls.setVisible(true);
   createNewRestaurant.setVisible(false);
+  restaurantCreated = true;
   setGUIValues();
 } //_CODE_:CreateRestaurant:252882:
 
@@ -38,27 +39,39 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:resta
 } //_CODE_:restaurantControls:326431:
 
 public void NumberOfServersChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfServers:708771:
-  resetGUIValues();
+  if (restaurantCreated) {
+    resetGUIValues();
+  }
 } //_CODE_:NumberOfServers:708771:
 
 public void NumberOfChefsChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfChefs:864665
-  resetGUIValues();
+  if (restaurantCreated) {
+    resetGUIValues();
+  }
 } //_CODE_:NumberOfChefs:864665:
 
 public void ServerSkillSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:ServerSkillSlider:381628:
-  resetGUIValues();
+  if (restaurantCreated) {
+    resetGUIValues();
+  }
 } //_CODE_:ServerSkillSlider:381628:
 
 public void ChefSkillSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:ChefSkillSlider:495450:
-  resetGUIValues();
+  if (restaurantCreated) {
+    resetGUIValues();
+  }
 } //_CODE_:ChefSkillSlider:495450:
 
 public void CustomerRateSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:CustomerRateSlider:256650:
-  resetGUIValues();
+  if (restaurantCreated) {
+    resetGUIValues();
+  }
 } //_CODE_:CustomerRateSlider:256650:
 
 public void CostOfFoodSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:CostOfFoodSlider:407025:
-  resetGUIValues();
+  if (restaurantCreated) {
+    resetGUIValues();
+  }
 } //_CODE_:CostOfFoodSlider:407025:
 
 public void PauseButtonClicked(GButton source, GEvent event) { //_CODE_:PauseButton:921997:
