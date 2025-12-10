@@ -24,27 +24,33 @@ float serverSkill, chefSkill;
 float costOfFood;
 
 void setup() {
+  //Sets up the size and background colour of the screeen
   size(1000, 600);
   background(225);
+  
+  //The images that are used as flooring
   floor1 = loadImage("floor.jpg");
   floor2 = loadImage("FloorTexture.jpg");
   floor1.resize(150, 150);
   floor2.resize(200, 150);
-  createGUI();
+  
+  createGUI(); 
   setGUIValues();
+  
   restaurantControls.setVisible(false);
   createNewRestaurant.setVisible(true);
 }
 
 void draw() {
   resetBackground();  //Function to reset backgroud and add boxes
-  if (restaurantCreated) {
+  
+  if (restaurantCreated) { //If the restaurant has been created then draw
     displayProfit();
     drawDishes(); //Function to draw dishes
     drawPeople(); //Function to draw all people
   }
   
-  if (paused) {
+  if (paused) { //If the simulation is paused then everything moves
     ////////////////////////////////////////////////SERVERSSSS/////////////////////////
     for (int i = 0; i < servers.length; i++){
       Server currServer = servers[i];

@@ -1,9 +1,9 @@
 class Furniture {
   //Fields
-  float w, h, sideLength;
+  float sideLength;
   PVector pos;
   color col;
-  boolean taken;
+  boolean taken; //used only for chairs to know if they are in use or not
   
   //Constructor
   Furniture(float sl, color col, float x, float y) {
