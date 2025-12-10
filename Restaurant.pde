@@ -39,7 +39,7 @@ void setup() {
 void draw() {
   resetBackground();  //Function to reset backgroud and add boxes
   if (restaurantCreated) {
-    drawObjects(); //Function to draw all objects
+    drawDishes(); //Function to draw dishes
     drawPeople(); //Function to draw all people
   }
   

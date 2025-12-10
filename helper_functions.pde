@@ -90,60 +90,12 @@ void drawPeople() {
   }
 }
 
-void drawObjects() {
-  
-  for (int i = 0; i < chairs.length; i++){
-    chairs[i].draw();
-  }
-  
-  for (int i = 0; i < tables.length; i++){
-    tables[i].draw();
-  }
+void drawDishes() {
   
   for (int i = 0; i < dishes.length; i++){
     dishes[i].draw();
   }
   
-}
-
-void setGUIValues() {
-  serverSkill = 5;
-  chefSkill = 5;
-  
-  if (location.equals("Waterloo")) {
-    rentPrice = 3000;
-    numOfServers = 4;
-    numOfChefs = 2;
-    customerRate = 15;
-    costOfFood = 30;
-  }
-  else if (location.equals("Elora")) {
-    rentPrice = 2200;
-    numOfServers = 2;
-    numOfChefs = 1;
-    customerRate = 10;
-    costOfFood = 20;
-  }
-  else {
-    rentPrice = 5000;
-    numOfServers = 6;
-    numOfChefs = 3;
-    customerRate = 24;
-    costOfFood = 40; 
-  }
-  
-  NumberOfServers.setValue(numOfServers);
-  NumberOfChefs.setValue(numOfChefs);
-  ServerSkillSlider.setValue(serverSkill);
-  ChefSkillSlider.setValue(chefSkill);
-  CustomerRateSlider.setValue(customerRate);
-  CostOfFoodSlider.setValue(costOfFood);
-
-  createChefs();
-  createDishes();
-  createServers();
-  createFurniture();
-  createCustomers();
 }
 
 void resetBackground(){
@@ -158,35 +110,19 @@ void resetBackground(){
       image(floor2, (x-0.15)*200, y*150);
     }
   }
+  
+  for (int i = 0; i < chairs.length; i++){
+    chairs[i].draw();
+  }
+  
+  for (int i = 0; i < tables.length; i++){
+    tables[i].draw();
+  }
+  
   fill(70);
   rect(750, 0, 40, 600);
   fill(180);
   rect(960, 0, 40, 600);
   fill(255);
   rect(0, 0, 600, 100);
-}
-
-void resetGUIValues() {
-  resetBackground();
-  
-  numOfServers = NumberOfServers.getValueI();
-  numOfChefs = NumberOfChefs.getValueI();
-  serverSkill = ServerSkillSlider.getValueI();
-  chefSkill = ChefSkillSlider.getValueI();
-  customerRate = CustomerRateSlider.getValueI();
-  costOfFood = CostOfFoodSlider.getValueF();
-  
-  NumberOfServers.setValue(numOfServers);
-  NumberOfChefs.setValue(numOfChefs);
-  ServerSkillSlider.setValue(serverSkill);
-  ChefSkillSlider.setValue(chefSkill);
-  CustomerRateSlider.setValue(customerRate);
-  CostOfFoodSlider.setValue(costOfFood);
-  
-  createChefs();
-  createDishes();
-  createServers();
-  createFurniture();
-  createCustomers();
-  
 }
