@@ -1,10 +1,12 @@
 class Server extends Person{
+  //Fields
   float skill;
   Dish dish;
   Customer customer;
   String customerSeat;
   boolean hasFood, serving;
   
+  //Constructors
   Server(float x,float y, float s){
     super(x, y, color(50, 80, 155), "server");
     this.skill = s;
@@ -16,42 +18,39 @@ class Server extends Person{
     this.customerSeat = "";
   }
   
-  void moveToStart(){
-    //If they're not at ends of lane yet
-    if (this.pos.x < 715){
-      //if they are not in a lane
-      if ((130<this.pos.y && this.pos.y<340) || (360<this.pos.y && this.pos.y<570)){
-        //Closest to top lane
-        if (abs(this.pos.y - 125) < abs(this.pos.y - 350)){
-          this.pos.add(new PVector(0, -this.skill));
-        }
-        //Closest to middle lane
-        else if (abs(this.pos.y - 350) < abs(this.pos.y - 575)){
-          this.vel = new PVector(0, 350-this.pos.y).normalize();
-          this.pos.add(this.vel.mult(this.skill));
-        }
-        //Closest to bottom lane
-        else{
-          this.pos.add(new PVector(0, this.skill));
-        }
+  //Methods
+  
+  //Goes to the bar when waiting around
+  void moveToBar(){
+    //if they are not in a lane, go to the nearest lane
+    if ((130<this.pos.y && this.pos.y<340) || (360<this.pos.y && this.pos.y<570)){
+      //If closest to top lane
+      if (abs(this.pos.y - 125) < abs(this.pos.y - 350)){
+        this.pos.add(new PVector(0, -this.skill));
       }
-      else{ //Walk to end of lane
-        this.pos.add(new PVector(this.skill, 0));
+      //If closest to middle lane
+      else if (abs(this.pos.y - 350) < abs(this.pos.y - 575)){
+        this.vel = new PVector(0, 350-this.pos.y).normalize();
+        this.pos.add(this.vel.mult(this.skill));
+      }
+      //If closest to bottom lane
+      else{
+        this.pos.add(new PVector(0, this.skill));
       }
     }
-    //From ends of lanes, go to beginning
+    //In the lane, walk to the end
     else{
-      if (this.pos.dist(new PVector(725, this.pos.y)) > 15){
+      if (this.pos.dist(new PVector(725, this.pos.y))> 10){
         this.vel = new PVector(725, this.pos.y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
     }
   }
   
-  void moveToDish(Dish d){///Edit boundaries for lanes
-    //If they're not at ends of lane yet
+  //Go to selected dish
+  void moveToDish(Dish d){
+    //If they're not at ends of lane yet, go to the nearest lane and follow it down
     if (this.pos.x < 715){
-      //if they are not in a lane
       if ((130<this.pos.y && this.pos.y<340) || (360<this.pos.y && this.pos.y<570)){
         //Closest to top lane
         if (abs(this.pos.y - 125) < abs(this.pos.y - 350)){
@@ -82,10 +81,12 @@ class Server extends Person{
     }
   }
   
+  //Go to the customer they are currently serving
   void moveToCustomer(){
     float x = this.customer.pos.x;
     float y = this.customer.pos.y;
     
+    //See what type of chair the customer is sitting on
     if ((50<x && x<90) || (290<x && x<330) || (530<x && x<570)){
       this.customerSeat = "left";
     }
@@ -99,15 +100,14 @@ class Server extends Person{
       this.customerSeat = "down";
     }
     
-    /////////////////Actually move/////////////////
+    //Depending on the type of seat, follow a different algorithm to avoid tables and serve the customer
     if (this.customerSeat == "left" || this.customerSeat == "right"){
-      println("Left Right");
-      //go to entrance of lane (in middle right now)
+      //go to entrance of lane if in the middle of table)
       if ((abs(this.pos.y-y) < 100) && (abs(this.pos.x-x) > 200)){
         this.vel = new PVector(710, y+100).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
       }
-      ////go to entrance of lane
+      //go to entrance of lane if on either end of table
       else if (abs(this.pos.y-y) > 110){
         this.vel = new PVector(710, y).sub(this.pos).normalize();
         this.pos.add(this.vel.mult(skill));
@@ -123,8 +123,7 @@ class Server extends Person{
         this.pos.add(this.vel.mult(skill));
       }
     }
-    else if (this.customerSeat == "up"){ //////Distance-ing fixed
-      println("up");
+    else if (this.customerSeat == "up"){
       //go to entrance of lane
       if (abs(this.pos.y-(y-45)) > 10){
         this.vel = new PVector(710, y-45).sub(this.pos).normalize();
@@ -142,7 +141,6 @@ class Server extends Person{
       }
     }
     else{
-      println("down");
       //go to entrance of lane
       if (abs(this.pos.y-(y+45)) > 15){
         this.vel = new PVector(710, y+45).sub(this.pos).normalize();
@@ -159,11 +157,10 @@ class Server extends Person{
         this.pos.add(this.vel.mult(skill));
       }
     }
-    //is there now//
   }
   
+  //Once at the customer, place down their dish in front of them according to their seat type
   void serveCustomer(){
-    //place dish in front of customer
     if (this.customerSeat == "left"){
       this.dish.pos = new PVector(this.customer.pos.x+45, this.customer.pos.y);
     }
@@ -176,15 +173,13 @@ class Server extends Person{
     else{
       this.dish.pos = new PVector(this.customer.pos.x, this.customer.pos.y-45);
     }
-    //reset booleans
+    //reset booleans for next iteration
     this.customer.dish = this.dish;
     this.dish = null;
     this.customer.eating = true;
     this.customer = null;
     this.serving = false;
   }
-  
-  
 }
 // If doesn't have food, pick a dish that is "readyToServe"
 // Find a customer who is free, then serving = true

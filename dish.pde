@@ -1,9 +1,11 @@
 class Dish{
+  //Fields
   PVector pos;
   float sizePlate, sizeFood, price;
   color colPlate, colFood;
   boolean cooked, readyToServe, taken;
   
+  //Constructors
   Dish(){
     this.pos = new PVector(-100, 0);
     this.sizePlate = 24;
@@ -16,6 +18,9 @@ class Dish{
     this.taken = false;
   }
   
+  //Methods
+  
+  //Draws the plate and food
   void draw(){
     fill(this.colPlate);
     circle(this.pos.x, this.pos.y, this.sizePlate);
@@ -23,15 +28,15 @@ class Dish{
     circle(this.pos.x, this.pos.y, this.sizeFood);
   }
   
+  //"Grows" the food
   void cook(float s){
     this.sizeFood += (s/10);
   }
   
-  
+  //Follow the selected person
   void follow(Person p){
     this.pos = (new PVector(-30, 0)).add(p.pos);
   }
-  
 }
 //When not cooked, wait for cooked
 // When cooked but not ready to serve, follow chef

@@ -213,12 +213,13 @@ class Customer extends Person{
     }
   }
   
+  //Eat selected dish
   void eat(Dish d){
     if (d.sizeFood >0){
       d.sizeFood -= 0.1;
     }
     else{
-      //Reset dish
+      //When eaten, reset booleans for next iteration
       d.cooked = false;
       d.readyToServe = false;
       d.taken = false;

@@ -1,8 +1,10 @@
 class Chef extends Person{
+  //Fields
   float skill;
   Dish dish;
   boolean cooking, serving;
   
+  //Constructors
   Chef(float x, float y, float s){
     super(x, y, color(255), "chef");
     this.skill = s;
@@ -12,15 +14,15 @@ class Chef extends Person{
     dish = null;
   }
   
-  void cook(){
-   this.vel = new PVector(0, 0); 
-  }
+  //Methods
   
+  //Walk to the bar
   void serve(){
     this.vel = new PVector(-2, 0);
     this.pos.add(this.vel);
   }
   
+  //Walk to the stove
   void goToStove(){
     this.vel = new PVector(2, 0);
     this.pos.add(this.vel);
@@ -28,7 +30,6 @@ class Chef extends Person{
 }  
 //// Array of chefs
 //// equal aray of dishes
-
 ////Start at stoves cooking
 ////When cooked, cooking = false
 ////If cooking = false, serving = true
