@@ -44,17 +44,17 @@ public void NumberOfServersChanged(GCustomSlider source, GEvent event) { //_CODE
   }
 } //_CODE_:NumberOfServers:708771:
 
-public void NumberOfChefsChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfChefs:864665
+public void NumberOfChefsChanged(GCustomSlider source, GEvent event) { //_CODE_:NumberOfChefs:864665:
   if (restaurantCreated) {
-    resetGUIValues();
-  }
-} //_CODE_:NumberOfChefs:864665:
+      resetGUIValues();
+    }
+}
 
 public void ServerSkillSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:ServerSkillSlider:381628:
   if (restaurantCreated) {
-    resetGUIValues();
-  }
-} //_CODE_:ServerSkillSlider:381628:
+      resetGUIValues();
+    }
+}
 
 public void ChefSkillSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:ChefSkillSlider:495450:
   if (restaurantCreated) {
@@ -66,7 +66,7 @@ public void CustomerRateSliderChanged(GCustomSlider source, GEvent event) { //_C
   if (restaurantCreated) {
     resetGUIValues();
   }
-} //_CODE_:CustomerRateSlider:256650:
+}
 
 public void CostOfFoodSliderChanged(GCustomSlider source, GEvent event) { //_CODE_:CostOfFoodSlider:407025:
   if (restaurantCreated) {
@@ -82,9 +82,7 @@ public void PauseButtonClicked(GButton source, GEvent event) { //_CODE_:PauseBut
   }
   else {
     PauseButton.setText("Resume");
-  }
-} //_CODE_:PauseButton:921997:
-
+  }} //_CODE_:PauseButton:921997:
 
 
 // Create all the GUI controls. 

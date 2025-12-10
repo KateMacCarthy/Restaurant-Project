@@ -127,13 +127,13 @@ void resetBackground(){
 }
 
 void displayProfit(){
-  textSize(35);
-  fill(0);
-  text("Profit:", 15, 35);
-  textSize(25);
+  textSize(30);
   fill(40, 155, 0);
-  text("Earned:", 325, 35);
+  text("Profit:", 15, 35);
+  textSize(23);
+  //text("Earned:", 270, 35);
   fill(200, 0, 0);
   text("Wage cost:", 325, 80);
   text("Ingredient cost:", 15, 80);
+  text("Rent Price: $"+ rentPrice, 325, 35);
 }
