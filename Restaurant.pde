@@ -39,6 +39,7 @@ void setup() {
 void draw() {
   resetBackground();  //Function to reset backgroud and add boxes
   if (restaurantCreated) {
+    displayProfit();
     drawDishes(); //Function to draw dishes
     drawPeople(); //Function to draw all people
   }

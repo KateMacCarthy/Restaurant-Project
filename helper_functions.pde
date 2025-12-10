@@ -1,5 +1,4 @@
 void createFurniture() {
-  
   for (int i = 0; i < tables.length; i++){
     float x, y;
     
@@ -125,4 +124,16 @@ void resetBackground(){
   rect(960, 0, 40, 600);
   fill(255);
   rect(0, 0, 600, 100);
+}
+
+void displayProfit(){
+  textSize(35);
+  fill(0);
+  text("Profit:", 15, 35);
+  textSize(25);
+  fill(40, 155, 0);
+  text("Earned:", 325, 35);
+  fill(200, 0, 0);
+  text("Wage cost:", 325, 80);
+  text("Ingredient cost:", 15, 80);
 }
