@@ -10,6 +10,7 @@ class Customer extends Person{
   boolean beingServed = false;
   boolean sitting = false;
   Dish dish = null;
+  Furniture chair = null;
   
   // Constructor
   
@@ -192,12 +193,19 @@ class Customer extends Person{
     this.vel = direction.mult( this.s ); // Make the velocity the "direction" variable multiplied by the speed of the customer
   }
   
+  void moveToExit(){
+    PVector displacement = PVector.sub(new PVector(0,300), this.pos); // Find out the displacement between the chair and the customer
+    float angle = displacement.heading(); // Find out the angle of the chair to the customer
+    PVector direction = new PVector ( cos(angle), sin(angle) ); // Properly calculate the "direction" (more or so where the vector is pointing) that the customer should be going
+    this.vel = direction.mult( this.s ); // Make the velocity the "direction" variable multiplied by the speed of the customer
+  }
+  
   
   // MOVE FUNCTION (SKELETON FOR NOW UNTIL I CAN ACTUALLY FIND OUT HOW TO CODE THIS)
   
   void move(){
     
-    if(!eating && !sitting && !leaving && !crashingOut){ //If the customer just entered the restaurant
+    if(!eating && !sitting && !leaving && !crashingOut && inRestaurant){ //If the customer just entered the restaurant
       Furniture chair = this.findChair(); // Find the closest chair
       this.moveToChair(chair); // Move to the chiar
       
@@ -208,9 +216,27 @@ class Customer extends Person{
         this.pos.y = chair.pos.y + (chair.sideLength / 2);
         this.sitting = true;
         chair.taken = true;
+        this.chair = chair;
       }
       
     }
+    
+    else if(!eating && !sitting && leaving && inRestaurant){
+      this.moveToExit();
+      this.pos.add(this.vel);
+      if(this.pos.x <= 10 && abs(this.pos.y-300)<10){
+        this.inRestaurant = false;
+        this.leaving = false;
+      }
+    }
+    
+    else{
+      int i = int(random(0,300));
+      if(i == 3){
+        this.inRestaurant = true;
+      }
+    }
+    
   }
   
   //Eat selected dish
@@ -223,11 +249,13 @@ class Customer extends Person{
       d.cooked = false;
       d.readyToServe = false;
       d.taken = false;
+      this.chair.taken = false;
       this.eating = false;
       this.beingServed = false;
       this.sitting = false;
       this.leaving = true;
       this.dish = null;
+      this.chair = null;
     }
   }
   
