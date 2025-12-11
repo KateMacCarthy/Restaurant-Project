@@ -17,7 +17,7 @@ boolean restaurantCreated = false;
 String restaurantName;
 String location = " ";
 
-float rentPrice;
+float rentPrice, earned, frames;
 
 int numOfServers, numOfChefs, customerRate;
 float serverSkill, chefSkill;
@@ -39,10 +39,11 @@ void setup() {
   
   restaurantControls.setVisible(false);
   createNewRestaurant.setVisible(true);
+  earned = 0;
+  frames = 0;
 }
 
 void draw() {
-  
   if (restaurantCreated) { //If the restaurant has been created then draw
     resetBackground(); //Function to reset backgroud and add boxes
     drawDishes(); //Function to draw dishes
@@ -51,6 +52,7 @@ void draw() {
   }
   
   if (paused) { //If the simulation is paused then everything moves
+    frames += 1;
     ////////////////////////////////////////////////SERVERSSSS/////////////////////////
     for (int i = 0; i < servers.length; i++){
       Server currServer = servers[i];

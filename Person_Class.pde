@@ -13,7 +13,7 @@ class Person {
   
   Person(float x, float y, color c, String s){
     this.pos = new PVector(x, y); // Setting the x and y position of pos
-    this.s = int(random(1,3)); // Randomly sets the speed from 1-3
+    this.s = int(random(1,5)); // Randomly sets the speed from 1-3
     this.col = c; // Sets the color to be c
     this.name = s; // Sets the name to be s
     this.vel = new PVector(0,0);

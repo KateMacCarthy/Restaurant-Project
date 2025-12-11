@@ -47,6 +47,10 @@ void setGUIValues() {
 }
 
 void resetGUIValues() {
+  //Reset pricing variables
+  earned = 0;
+  frames = 0;
+  
   //If the restaurant hasn't been created do nothing
   if (!restaurantCreated){}
   

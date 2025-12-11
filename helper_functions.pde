@@ -161,42 +161,21 @@ void resetBackground(){
   rect(0, 0, 600, 100);
 }
 
+//Calculates profit based on GUI variables and time conversion of 1 second in real life = 1 minute in simulation
 void displayProfit(){
-  
-  float initialwageserver = 17.60 + (0.5*serverSkill);
-  float initialwagechef = 17.60 + (0.5*chefSkill);
-  float initialwages = 0;
-  float truerent = rentPrice / 750.5;
-  String wages;
-  
-  
-  
-   
-  for(int i = 0; i < numOfServers; i++){
-    initialwages += initialwageserver;
-  }
-  for(int i = 0; i < numOfChefs; i++){
-    initialwages += initialwagechef;
-  }
-  
-  wages = nf(initialwages,0,2);
-  
-  String ingredientCost = nf(costOfFood * 0.66 * customerRate, 0, 2);
-  
-  String income = nf(costOfFood * 0.33 * customerRate,0,2);
-  
-  float expenses = initialwages + truerent + (costOfFood * 0.66 * customerRate);
-  float earned = costOfFood * customerRate - expenses;
-  
-  String earnings = nf(earned,0,2);
-  
+  float earnedPrice = earned*costOfFood;
+  float ingredientPrice = earnedPrice/3;
+  float wagePriceHourly = servers.length*(17.6 + (serverSkill/2)) + chefs.length*(17.6 + (chefSkill/2));
+  float wagePrice = frames*wagePriceHourly/(60*30);
+  float RentPrice = frames*rentPrice/(30.5*24*60*30);
   textSize(30);
   fill(0);
-  text("Profit: $" + earnings, 15, 35);
+  text("Profit: $" + nf(earnedPrice-wagePrice-RentPrice-ingredientPrice, 0, 2), 15, 40);
   textSize(23);
- fill(40, 155, 0);
-  text("Earned: $" + income, 325, 35);
+  fill(40, 155, 0);
+  text("Earned: $" + nf(earnedPrice, 0, 2), 325, 30);
   fill(200, 0, 0);
-  text("Wage cost: $" + wages, 325, 80);
-  text("Ingredient cost: $" + ingredientCost, 15, 80);
+  text("Wage cost: $" + nf(wagePrice, 0, 2), 325, 85);
+  text("Rent cost: $" + nf(RentPrice, 0, 2), 325, 57);
+  text("Ingredient cost: $" + nf(ingredientPrice, 0, 2), 15, 80);
 }
