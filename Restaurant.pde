@@ -45,9 +45,9 @@ void draw() {
   
   if (restaurantCreated) { //If the restaurant has been created then draw
     resetBackground(); //Function to reset backgroud and add boxes
-    displayProfit();
     drawDishes(); //Function to draw dishes
     drawPeople(); //Function to draw all people
+    displayProfit();
   }
   
   if (paused) { //If the simulation is paused then everything moves

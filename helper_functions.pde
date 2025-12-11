@@ -97,7 +97,9 @@ void drawPeople() {
   
   //Draws all the customers in the array
   for (int i = 0; i < customers.length; i++){
-    customers[i].draw();
+    if(customers[i].inRestaurant == true){
+      customers[i].draw();
+    }
   }
   
   //Draws all the servers in the array
@@ -160,13 +162,41 @@ void resetBackground(){
 }
 
 void displayProfit(){
+  
+  float initialwageserver = 17.60 + (0.5*serverSkill);
+  float initialwagechef = 17.60 + (0.5*chefSkill);
+  float initialwages = 0;
+  float truerent = rentPrice / 750.5;
+  String wages;
+  
+  
+  
+   
+  for(int i = 0; i < numOfServers; i++){
+    initialwages += initialwageserver;
+  }
+  for(int i = 0; i < numOfChefs; i++){
+    initialwages += initialwagechef;
+  }
+  
+  wages = nf(initialwages,0,2);
+  
+  String ingredientCost = nf(costOfFood * 0.66 * customerRate, 0, 2);
+  
+  String income = nf(costOfFood * 0.33 * customerRate,0,2);
+  
+  float expenses = initialwages + truerent + (costOfFood * 0.66 * customerRate);
+  float earned = costOfFood * customerRate - expenses;
+  
+  String earnings = nf(earned,0,2);
+  
   textSize(30);
   fill(0);
-  text("Profit:", 15, 35);
+  text("Profit: $" + earnings, 15, 35);
   textSize(23);
  fill(40, 155, 0);
-  text("Earned:", 325, 35);
+  text("Earned: $" + income, 325, 35);
   fill(200, 0, 0);
-  text("Wage cost:", 325, 80);
-  text("Ingredient cost:", 15, 80);
+  text("Wage cost: $" + wages, 325, 80);
+  text("Ingredient cost: $" + ingredientCost, 15, 80);
 }
