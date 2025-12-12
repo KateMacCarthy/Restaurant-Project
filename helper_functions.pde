@@ -163,20 +163,25 @@ void resetBackground(){
 
 //Calculates profit based on GUI variables and time conversion of 1 second in real life = 1 minute in simulation
 void displayProfit(){
-  float earnedPrice = earned*costOfFood;
-  float ingredientPrice = earnedPrice/3;
-  float wagePriceHourly = servers.length*(17.6 + (serverSkill/2)) + chefs.length*(17.6 + (chefSkill/2));
-  float wagePrice = frames*wagePriceHourly/(60*30);
-  float RentPrice = frames*rentPrice/(30.5*24*60*30);
+  
+  //Create Variables
+  
+  float earnedPrice = earned*costOfFood; //Calculate the money earned
+  float ingredientPrice = earnedPrice/3; //Calculate the ingredient price
+  float wagePriceHourly = servers.length*(17.6 + (serverSkill/2)) + chefs.length*(17.6 + (chefSkill/2)); //Calculate the prices of wage in terms of hours
+  float wagePrice = frames*wagePriceHourly/(60*30); //Calculate how much is going to be paid in terms of wages
+  float RentPrice = frames*rentPrice/(30.5*24*60*30); //Calculate how much rent is
+  
+  //Display the Values
   
   textSize(30);
   fill(0);
-  text("Profit: $" + nf(earnedPrice-wagePrice-RentPrice-ingredientPrice, 0, 2), 15, 40);
+  text("Profit: $" + nf(earnedPrice-wagePrice-RentPrice-ingredientPrice, 0, 2), 15, 40); //Profit
   textSize(23);
   fill(40, 155, 0);
-  text("Earned: $" + nf(earnedPrice, 0, 2), 325, 30);
+  text("Earned: $" + nf(earnedPrice, 0, 2), 325, 30); //$ earned
   fill(200, 0, 0);
-  text("Wage cost: $" + nf(wagePrice, 0, 2), 325, 85);
-  text("Rent cost: $" + nf(RentPrice, 0, 2), 325, 57);
-  text("Ingredient cost: $" + nf(ingredientPrice, 0, 2), 15, 80);
+  text("Wage cost: $" + nf(wagePrice, 0, 2), 325, 85); //Wage cost
+  text("Rent cost: $" + nf(RentPrice, 0, 2), 325, 57); //Rent cost
+  text("Ingredient cost: $" + nf(ingredientPrice, 0, 2), 15, 80); //Ingredient cost
 }

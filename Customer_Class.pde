@@ -3,7 +3,6 @@ class Customer extends Person{
   // Variables
   
   int patience = 100;
-  boolean crashingOut = false; // For when the customer starts CRASHING out
   boolean leaving = false;
   boolean eating = false;
   boolean inRestaurant = true;
@@ -20,6 +19,8 @@ class Customer extends Person{
   }
   
   // Functions
+  
+  
   // The two shared functions
   
   void draw(){
@@ -54,9 +55,11 @@ class Customer extends Person{
     this.vel = direction.mult( this.s ); // Make the velocity the "direction" variable multiplied by the speed of the customer
   }
   
+  //moveToExit
+  
   void moveToExit(){
-    PVector displacement = PVector.sub(new PVector(0,300), this.pos); // Find out the displacement between the chair and the customer
-    float angle = displacement.heading(); // Find out the angle of the chair to the customer
+    PVector displacement = PVector.sub(new PVector(0,300), this.pos); // Find out the displacement between the exit and the customer
+    float angle = displacement.heading(); // Find out the angle of the exit to the customer
     PVector direction = new PVector ( cos(angle), sin(angle) ); // Properly calculate the "direction" (more or so where the vector is pointing) that the customer should be going
     this.vel = direction.mult( this.s ); // Make the velocity the "direction" variable multiplied by the speed of the customer
   }
@@ -66,7 +69,7 @@ class Customer extends Person{
   
   void move(){
     
-    if(!eating && !sitting && !leaving && !crashingOut && inRestaurant){ //If the customer just entered the restaurant
+    if(!eating && !sitting && !leaving && inRestaurant){ //If the customer just entered the restaurant
       if (this.chair == null){
         this.chair = this.findChair(); // Find the closest chair
         if (this.chair == null);
@@ -86,19 +89,19 @@ class Customer extends Person{
       
     }
     
-    else if(!eating && !sitting && leaving && inRestaurant){
-      this.moveToExit();
+    else if(!eating && !sitting && leaving && inRestaurant){ //If you are leaving
+      this.moveToExit(); //Go to the exit
       this.pos.add(this.vel);
-      if(this.pos.x <= 10 && abs(this.pos.y-300)<10){
-        this.inRestaurant = false;
+      if(this.pos.x <= 10 && abs(this.pos.y-300)<10){ //If the customer is at the exit
+        this.inRestaurant = false; //Leave the restaurant
         this.leaving = false;
       }
     }
     
     else{
-      int i = int(random(0,300));
-      if(i == 3){
-        this.inRestaurant = true;
+      int i = int(random(0,300)); //Randomly pick a number
+      if(i == 3){ //If that number is 3
+        this.inRestaurant = true; //Re enter the restaurant
       }
     }
     
