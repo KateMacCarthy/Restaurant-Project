@@ -13,7 +13,6 @@ class Furniture {
     this.pos = new PVector(x, y);
   }
   
-  
   //Methods
   void draw() {
     fill(col);

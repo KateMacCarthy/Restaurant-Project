@@ -168,6 +168,7 @@ void displayProfit(){
   float wagePriceHourly = servers.length*(17.6 + (serverSkill/2)) + chefs.length*(17.6 + (chefSkill/2));
   float wagePrice = frames*wagePriceHourly/(60*30);
   float RentPrice = frames*rentPrice/(30.5*24*60*30);
+  
   textSize(30);
   fill(0);
   text("Profit: $" + nf(earnedPrice-wagePrice-RentPrice-ingredientPrice, 0, 2), 15, 40);

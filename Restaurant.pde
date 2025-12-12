@@ -34,11 +34,15 @@ void setup() {
   floor1.resize(150, 150);
   floor2.resize(200, 150);
   
+  //Create the GUI and set the vaules
   createGUI(); 
   setGUIValues();
   
+  //Set one of the control windows to not visible
   restaurantControls.setVisible(false);
   createNewRestaurant.setVisible(true);
+  
+  //Set variables to zero
   earned = 0;
   frames = 0;
 }

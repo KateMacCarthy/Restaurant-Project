@@ -20,8 +20,6 @@ class Customer extends Person{
   }
   
   // Functions
-  
-  
   // The two shared functions
   
   void draw(){
